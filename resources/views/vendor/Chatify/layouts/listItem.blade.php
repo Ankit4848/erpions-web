@@ -4,7 +4,7 @@
         <tr data-action="0">
             {{-- Avatar side --}}
             <td>
-                <div class="avatar av-m" style="background-color: #D9EFFF; text-align: center;">
+                <div class="avatar av-m" style="">
                     <span class="ti ti-bookmark" style="font-size: 22px; color: #6FD943;"></span>
                 </div>
             </td>

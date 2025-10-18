@@ -20,7 +20,7 @@
 }
 .messenger-listView{
     background: #fff;
-    border: 1px solid #eee;
+    /* border: 1px solid #eee; */
 }
 .messenger-listView-tabs{
     border-bottom: 1px solid #eee;
@@ -36,7 +36,7 @@
     background: #f7f7f7;
 }
 .messenger-messagingView {
-    border-top: 1px solid #eee;
+    /* border-top: 1px solid #eee; */
     border-bottom: 1px solid #eee;
     background: #fafaff;
 }
@@ -78,7 +78,7 @@
     color: #606679;
 }
 .messenger-list-item td p{
-    color: #606679;
+    color: #282828;
 }
 .activeStatus{
     border: 2px solid #fff;
