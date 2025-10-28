@@ -41,7 +41,7 @@
                 <div class="card">
                     <div class="card-body">
                         {{ Form::open(['route' => ['attendanceemployee.index'], 'method' => 'get', 'id' => 'attendanceemployee_filter']) }}
-                        <div class="row align-items-center justify-content-end">
+                        <div class="row align-items-center justify-content-start">
                             <div class="col-xl-10">
                                 <div class="row row-gap-1">
                                     <div class="col-3">
@@ -94,24 +94,27 @@
                             <div class="col-auto mt-4">
                                 <div class="row">
                                     <div class="col-auto">
-                                        <a href="#" class="btn btn-sm btn-primary me-1"
+                                        <a href="#" class="me-1"
                                             onclick="document.getElementById('attendanceemployee_filter').submit(); return false;"
                                             data-bs-toggle="tooltip" title="{{ __('Apply') }}"
                                             data-original-title="{{ __('apply') }}">
-                                            <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
+                                            <!-- <span class="btn-inner--icon"><i class="ti ti-search"></i></span> -->
+                                             <img src="{{ asset('assets/images/design-images/All/S-1.svg') }}" alt="" style="width: 41px;">
                                         </a>
                                         <a href="{{ route('attendanceemployee.index') }}"
-                                            class="btn btn-sm btn-danger me-1" data-bs-toggle="tooltip"
+                                            class="me-1" data-bs-toggle="tooltip"
                                             title="{{ __('Reset') }}" data-original-title="{{ __('Reset') }}">
-                                            <span class="btn-inner--icon"><i
-                                                    class="ti ti-refresh text-white-off "></i></span>
+                                            <!-- <span class="btn-inner--icon"><i
+                                                    class="ti ti-refresh text-white-off "></i></span> -->
+                                                    <img src="{{ asset('assets/images/design-images/All/S-2.svg') }}" alt="" style="width: 41px;">
                                         </a>
                                         <a href="#" data-size="md" data-bs-toggle="tooltip"
                                             title="{{ __('Import') }}" data-url="{{ route('attendance.file.import') }}"
                                             data-ajax-popup="true"
                                             data-title="{{ __('Import employee attendance CSV file') }}"
-                                            class="btn btn-sm bg-brown-subtitle text-white me-1">
-                                            <i class="ti ti-file-import"></i>
+                                            class="me-1">
+                                            <!-- <i class="ti ti-file-import"></i> -->
+                                             <img src="{{ asset('assets/images/design-images/All/S-3.svg') }}" alt="" style="width: 41px;">
                                         </a>
                                     </div>
 

@@ -45,8 +45,9 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
+                
                 <div class="col-xl-3">
-                    <div class="card sticky-top p-0" style="top:30px">
+                    <div class="card sticky-top" style="height: 93%; top:30px; border : none !important; box-shadow : 0px 0px 20px rgba(0,0,0,0.09);">
                         <div class="list-group list-group-flush" id="useradd-sidenav">
                             <a href="#" class="list-group-item list-group-item-action border-0 tab-link active"
                                 data-tab="guideline">{{ __('GuideLine') }}
@@ -65,17 +66,15 @@
                 </div>
 
                 <div class="col-xl-9">
-                    {{--  Start for all settings tab --}}
-
                     <!--Site Settings-->
-                    <div id="guideline" class="card tab-content">
+                    <div id="guideline" class="card tab-content"  style="border: none;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);">
                         <div class="card-header">
                             <h5>{{ __('GuideLine') }}</h5>
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-5 mb-3 mb-md-0">
-                                    <div class = "border rounded p-3 mb-0">
+                                    <div class = "border rounded p-3 mb-0" style="height: 100%;">
                                         <h4>{{ __('Refer ') . $companyName .  __(' and earn ') . $currency . (isset($setting) ? $setting->minimum_threshold_amount : '') . __(' per paid signup!') }}</h4>
                                         {!! isset($setting) ? $setting->guideline : '' !!}
                                     </div>
@@ -109,7 +108,7 @@
 
                     </div>
 
-                    <div id="referral-transaction" class="card tab-content d-none">
+                    <div id="referral-transaction" class="card tab-content d-none" style="border: none;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);">
                         <div class="card-header">
                             <h5>{{ __('Referral Transaction') }}</h5>
                         </div>
@@ -147,7 +146,7 @@
                     </div>
 
                     <div id="payout" class="tab-content d-none">
-                        <div class="card">
+                        <div class="card" style="border: none;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);">
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-6">
@@ -179,13 +178,14 @@
                                 <div class="row align-items-center justify-content-between gy-3">
                                     <div class="col-md-6 col-12 payout-card">
                                         <div class="payout-card-inner d-flex align-items-start gap-3">
-                                            <svg class="bottom-svg" width="135" height="80" viewBox="0 0 135 80"
+                                            <!-- <svg class="bottom-svg" width="135" height="80" viewBox="0 0 135 80"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M74.7692 35C27.8769 35 5.38462 65 0 80H135.692V0C134.923 11.6667 121.662 35 74.7692 35Z"
                                                     fill="#FF3A6E"></path>
-                                            </svg>
-                                            <div class="payout-icon">
+                                            </svg> -->
+                                             <img src="{{ asset('assets/images/design-images/dashboard/save-money.svg') }}" alt="">
+                                            <!-- <div class="payout-icon">
                                                 <div class="icon-inner">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -202,7 +202,7 @@
                                                         </defs>
                                                     </svg>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="payout-content flex-1">
                                                 <span class="text-sm d-block mb-1">{{ __('Total') }}</span>
                                                 <h2 class="h5 mb-0">{{ __('Commission Amount') }}</h2>
@@ -212,13 +212,14 @@
                                     </div>
                                     <div class="col-md-6 col-12 payout-card">
                                         <div class="payout-card-inner d-flex align-items-start gap-3">
-                                            <svg class="bottom-svg" width="135" height="80" viewBox="0 0 135 80"
+                                            <!-- <svg class="bottom-svg" width="135" height="80" viewBox="0 0 135 80"
                                                 fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M74.7692 35C27.8769 35 5.38462 65 0 80H135.692V0C134.923 11.6667 121.662 35 74.7692 35Z"
                                                     fill="#FF3A6E"></path>
-                                            </svg>
-                                            <div class="payout-icon">
+                                            </svg> -->
+                                             <img src="{{ asset('assets/images/design-images/dashboard/save-amount.svg') }}" alt="">
+                                            <!-- <div class="payout-icon">
                                                 <div class="icon-inner">
                                                     <svg width="24" height="24" viewBox="0 0 24 24"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -242,7 +243,7 @@
                                                             fill="white" />
                                                     </svg>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="payout-content flex-1">
                                                 <span class="text-sm d-block mb-1">{{ __('Paid') }}</span>
                                                 <h2 class="h5 mb-0">{{ __('Paid Amount') }}</h2>
@@ -257,8 +258,8 @@
 
 
 
-                        <div class="card">
-                            <div class="card-header">
+                        <div class="card" style="border: none;box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);">
+                            <div class="card-header" style="border: none;">
                                 <div class="row">
                                     <div class="col-6">
                                         <h5 class="">{{ __('Payout History') }}</h5>
@@ -305,6 +306,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

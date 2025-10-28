@@ -52,7 +52,7 @@
                 <div class="card">
                     <div class="card-body">
                         {{ Form::open(['route' => ['attendanceemployee.bulkattendance'], 'method' => 'get', 'id' => 'bulkattendance_filter']) }}
-                        <div class="row align-items-center justify-content-end">
+                        <div class="row align-items-center justify-content-start">
                             <div class="col-xl-10">
                                 <div class="row">
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
@@ -86,11 +86,12 @@
                                 </div>
                             </div>
                             <div class="col-auto float-end ms-2 mt-4">
-                                <a href="#" class="btn btn-sm btn-primary"
+                                <a href="#"
                                     onclick="document.getElementById('bulkattendance_filter').submit(); return false;"
                                     data-bs-toggle="tooltip" title="{{ __('Apply') }}"
                                     data-original-title="{{ __('apply') }}">
-                                    <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
+                                    <img src="{{ asset('assets/images/design-images/All/S-1.svg') }}" alt="" style="width: 41px;">
+                                   
                                 </a>
                             </div>
                         </div>
@@ -108,7 +109,7 @@
 
                     {{ Form::open(['route' => ['attendanceemployee.bulkattendances'], 'method' => 'post']) }}
                     <div class="table-responsive">
-                        <table class="table" id="pc-dt-simple">
+                        <table class="table brs-right-left" id="pc-dt-simple">
                             <thead>
                                 <tr>
                                     <th width="10%">{{ __('Employee Id') }}</th>

@@ -113,10 +113,18 @@
                                         </div>
                                     </div>
                                 </div>
+
+                               
+                            
                                 <div class="form-group col-md-6">
                                     {!! Form::label('company_doj', __('Company Date Of Joining'), ['class' => '  form-label']) !!}<x-required></x-required>
                                     {{ Form::date('company_doj', null, ['class' => 'form-control ', 'required' => 'required', 'autocomplete' => 'off' ,'placeholder'=>'Select company date of joining']) }}
                                 </div>
+
+                                 <div class="form-group mb-0">
+                                <label for="address" class="form-label">Address</label><span class="text-danger">*</span>
+                                <textarea class="form-control" rows="2" placeholder="Enter employee address" required="required" name="address" cols="50" id="address"></textarea>
+                            </div>
 
                             </div>
                         </div>
@@ -157,11 +165,8 @@
                                                     <p id="" class="file-error text-danger"></p>
                                                 </label>
                                                 <img id="{{'blah'.$key}}" src=""  width="50%" />
-
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </div>
                             @endforeach
@@ -172,8 +177,8 @@
                     <div class="card em-card">
                         <div class="card-header">
                             <h5>{{ __('Bank Account Detail') }}</h5>
-                        </div>
-                        <div class="card-body employee-detail-create-body">
+                     </div>
+                        <div class="card-body employee-detail-create-body   ">
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     {!! Form::label('account_holder_name', __('Account Holder Name'), ['class' => 'form-label']) !!}

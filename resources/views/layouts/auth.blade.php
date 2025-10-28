@@ -126,7 +126,7 @@
 </head>
 
 <body class="{{ $themeColor }}">
-    <div class="custom-login">
+   <!-- <div class="custom-login">
         <div class="login-bg-img">
             <img src="{{ isset($setting['color_flag']) && $setting['color_flag'] == 'false' ? asset('assets/images/auth/'.$color.'.svg') : asset('assets/images/auth/theme-3.svg') }}" class="login-bg-1">
             <img src="{{ asset('assets/images/auth/common.svg') }}" class="login-bg-2">
@@ -185,6 +185,58 @@
                     </div>
                 </div>
             </footer>
+        </div>
+    </div>  -->
+
+    <div class="new-login-page-container">
+        <!-- Left Side -->
+        <div class="new-login-page-left">    
+            <div class="details-header">
+                 <a class="navbar-brand nav-logo" href="#">
+                            @if ($setting['cust_darklayout'] == 'on')
+                                <img class="logo"
+                                    src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-light.png') . '?' . time() }}"
+                                    alt="" loading="lazy" style="width: 300px;"/>
+                            @else
+                                <img class="logo"
+                                    src="{{ $logo . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo-dark.png') . '?' . time() }}"
+                                    alt="" loading="lazy" style="width: 300px;"/>
+                            @endif
+                </a>
+                @yield('content')
+            </div>
+            <footer class="login-footer">
+                <div class="auth-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="login-nav-last">
+                                    @include('landingpage::layouts.buttons')
+                                    <!-- @yield('language-bar') -->
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <span>&copy; {{ date('Y') }}
+                                    {{ App\Models\Utility::getValByName('footer_text') ? App\Models\Utility::getValByName('footer_text') : config('app.name', 'Storego Saas') }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer> 
+        </div>
+
+        <!-- Right Side -->
+        <div class="new-login-page-right">
+            <div class="new-login-page-right-design">
+                <div class="right-details-login">
+                    <div class="right-login-titles">
+                        <h1 class="right-login-titles-h1">Connect. Control. Collaborate</h1 >
+                        <h5 class="right-login-titles-h5">Access your ERP dashboard to manage operations, track performance, and make <span> smarter business decisions. </span></h5>
+                    </div>
+                    <img  src="{{ asset('assets/images/design-images/login-right-des.svg') }}" alt="" class="login-dash-img">
+                </div>
+            </div>
         </div>
     </div>
 

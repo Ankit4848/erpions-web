@@ -202,14 +202,9 @@
             <div class="page-header">
                 <div class="page-block">
                     <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                        <div>
-                            <div class="page-header-title">
-                                <h4 class="mb-2">@yield('page-title')</h4>
-                            </div>
-                            <ul class="breadcrumb">
-                                @yield('breadcrumb')
-                            </ul>
-                        </div>
+                          <ul class="breadcrumb">
+                    @yield('breadcrumb')
+                </ul>
                         <div class="action-btn-col">
                             @yield('action-btn')
                         </div>
@@ -217,7 +212,6 @@
                 </div>
             </div>
             @yield('content')
-            <!-- [ Main Content ] end -->
         </div>
     </div>
     <div class="modal fade" id="commonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

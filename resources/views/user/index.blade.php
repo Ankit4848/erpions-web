@@ -42,11 +42,11 @@
             <div class="user-card d-flex flex-column h-100">
                 <div class="user-card-top d-flex align-items-center justify-content-between flex-1 gap-2 mb-3">
                     @if (\Auth::user()->type == 'super admin')
-                        <div class="badge bg-primary p-1 px-2">
+                        <div class="badge bg-primary p-1 px-2" style="border-radius: 10px !important;">
                             {{ !empty($user->currentPlan) ? $user->currentPlan->name : '' }}
                         </div>
                     @else
-                        <div class="badge bg-primary p-1 px-2">
+                        <div class="badge bg-primary p-1 px-2" style="border-radius: 10px !important;">
                             {{ ucfirst($user->type) }}
                         </div>
                     @endif
@@ -132,7 +132,7 @@
                     @endif
                 </div>
                 <div class="user-info-wrp d-flex align-items-center gap-3 border-bottom pb-3 mb-3">
-                    <div class="user-image rounded-1 border-1 border border-primary">
+                    <div class="user-image" style="border-radius: 100px;">
                         <img src="{{ !empty($user->avatar) ? Utility::get_file('uploads/avatar/') . $user->avatar : asset(Storage::url('uploads/avatar/avatar.png')) }}"
                             alt="user-image" height="100%" width="100%">
                     </div>
@@ -151,13 +151,15 @@
                     @endphp
                     <div class="date d-flex align-items-center gap-2">
                         <div class="date-icon d-flex align-items-center justify-content-center">
-                            <i class="f-16 ti ti-calendar text-white"></i>
+<img src="{{ asset('assets/images/design-images/dashboard/user-calander.svg') }}" alt="calendar">
+
                         </div>
                         <span class="text-sm">{{ $date }}</span>
                     </div>
                     <div class="time d-flex align-items-center gap-2">
                         <div class="time-icon d-flex align-items-center justify-content-center">
-                            <i class="f-16 ti ti-clock text-white"></i>
+                           <img src="{{ asset('assets/images/design-images/dashboard/user-time.svg') }}" alt="calendar">
+
                         </div>
                         <span class="text-sm">{{ $time }}</span>
                     </div>
@@ -211,7 +213,7 @@
             data-title="{{ \Auth::user()->type == 'super admin' ? __('Create Company') : __('Create User') }}"
             data-bs-toggle="tooltip" title=""
             data-bs-original-title="{{ \Auth::user()->type == 'super admin' ? __('Create Company') : __('Create User') }}">
-            <div class="bg-primary proj-add-icon">
+            <div class="proj-add-icon">
                 <i class="ti ti-plus"></i>
             </div>
             <h6 class="mt-3 mb-2">

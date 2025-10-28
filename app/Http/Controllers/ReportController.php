@@ -56,7 +56,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
-
+    public function reports()
+    {
+         return view('report.reports');
+    }
+    
     public function incomeSummary(Request $request)
     {
         if (\Auth::user()->can('income report')) {

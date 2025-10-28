@@ -10,13 +10,13 @@
 @section('action-btn')
     <div class="float-end d-flex">
 
-        <a href="{{route('proposal.export')}}" class="me-2 btn btn-sm btn-secondary" data-bs-toggle="tooltip" title="{{__('Export')}}">
-            <i class="ti ti-file-export"></i>
+        <a href="{{route('proposal.export')}}" class="me-2 btn btn-sm btn-secondary new-plus-btn-file" data-bs-toggle="tooltip" title="{{__('Export')}}">
+            <i class="ti ti-file-export "></i>
         </a>
 
         @can('create proposal')
-            <a href="{{ route('proposal.create',0) }}" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="{{__('Create')}}">
-                <i class="ti ti-plus"></i>
+            <a href="{{ route('proposal.create',0) }}" class="btn btn-sm btn-primary new-plus-btn" data-bs-toggle="tooltip" title="{{__('Create')}}">
+                <i class="ti ti-plus "></i>
             </a>
         @endcan
     </div>
@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-body">
                             {{ Form::open(array('route' => array('proposal.index'),'method' => 'GET','id'=>'frm_submit')) }}
-                        <div class="d-flex align-items-center justify-content-end">
+                        <div class="d-flex align-items-center justify-content-start">
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 me-2">
                                 <div class="btn-box">
                                     {{ Form::label('issue_date', __('Date'),['class'=>'form-label']) }}
@@ -50,13 +50,12 @@
                                 </div>
                             </div>
                             <div class="col-auto float-end ms-2 mt-4">
-
-                                <a href="#" class="btn btn-sm btn-primary me-1" onclick="document.getElementById('frm_submit').submit(); return false;" data-bs-toggle="tooltip" data-bs-original-title="{{__('Apply')}}">
-                                    <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
+                                <a href="#" class="me-1" onclick="document.getElementById('frm_submit').submit(); return false;" data-bs-toggle="tooltip" data-bs-original-title="{{__('Apply')}}">
+                                    <img src="{{ asset('assets/images/design-images/All/S-1.svg') }}" alt="" style="width: 41px;">
                                 </a>
-                                <a href="{{ route('proposal.index') }}" class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
+                                <a href="{{ route('proposal.index') }}"  data-bs-toggle="tooltip"
                                    title="{{ __('Reset') }}">
-                                    <span class="btn-inner--icon"><i class="ti ti-refresh text-white "></i></span>
+                                    <img src="{{ asset('assets/images/design-images/All/S-2.svg') }}" alt="" style="width: 41px;">
                                 </a>
                             </div>
 

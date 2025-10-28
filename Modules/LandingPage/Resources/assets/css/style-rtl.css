@@ -14,6 +14,7 @@ File: style.css
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Dancing+Script:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lalezar&family=Lateef:wght@200;300;400;500;600;700;800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 :root {
     --bs-blue: #51459d;
@@ -58,7 +59,7 @@ File: style.css
     --bs-black-rgb: 0, 0, 0;
     --bs-body-color-rgb: 41, 50, 64;
     --bs-body-bg-rgb: 248, 249, 253;
-    --bs-font-sans-serif: "Open Sans", sans-serif;
+    --bs-font-sans-serif: "Poppins", sans-serif;
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
     --bs-body-font-family: var(--bs-font-sans-serif);
@@ -26628,7 +26629,7 @@ body.theme-10 .team-lists img {
 
 .notifier-container {
     z-index: 1029;
-    font-family: "Open Sans", sans-serif;
+    font-family:"Poppins", sans-serif;
     width: 400px;
     max-width: 98%;
     top: 15px;
@@ -27511,7 +27512,7 @@ body.anim-slip-from-top.modal-open .dash-header {
 }
 
 .daterangepicker {
-    font-family: "Open Sans", sans-serif;
+    font-family:"Poppins", sans-serif;
     border: 1px solid rgba(0, 0, 0, 0.15);
     box-shadow: 0 0 25px rgba(81, 69, 157, 0.15);
     background-color: #ffffff;
