@@ -15,9 +15,8 @@
 @section('content')
 <div class="row">
     <div class="col-xl-12">
-        <div class="card">
+        <div class="new-box-table-shadow">
             <div class="card-header card-body table-border-style">
-                <h5></h5>
                 <div class="table-responsive">
                     <table class="table datatable" id="pc-dt-simple">
                         <thead>
@@ -39,9 +38,9 @@
                                                     <span>
                                                         <div class="action-btn">
                                                             <a href="{{ route('manage.notification.language', [$notification_template->id, \Auth::user()->lang]) }}"
-                                                                class="mx-3 btn btn-sm  align-items-center view-btn"
+                                                                class="mx-3"
                                                                 data-bs-toggle="tooltip" data-bs-original-title="{{__('View')}}" title="">
-                                                                <span class=""><i class="ti ti-eye"></i></span>
+                                                                <img src="{{ asset('assets/images/design-images/All/eyes-mett.svg') }}" alt="" style="width: 35px;">
                                                             </a>
                                                         </div>
                                                     </span>

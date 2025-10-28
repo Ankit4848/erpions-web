@@ -14,7 +14,7 @@
 @endphp
 
 @if (isset($setting['cust_theme_bg']) && $setting['cust_theme_bg'] == 'on')
-    <nav class="dash-sidebar light-sidebar transprent-bg">
+    <nav class="dash-sidebar light-sidebar transprent-bg border-right-1 border-nav-rad ">
     @else
         <nav class="dash-sidebar light-sidebar ">
 @endif

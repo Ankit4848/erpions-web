@@ -55,16 +55,18 @@
                                                 @if($account->holder_name!='Cash')
                                                     @can('edit bank account')
                                                         <div class="action-btn me-2">
-                                                            <a href="#" class="mx-3 btn btn-sm align-items-center bg-info" data-url="{{ route('bank-account.edit',$account->id) }}" data-ajax-popup="true" title="{{__('Edit')}}" data-title="{{__('Edit Bank Account')}}"data-bs-toggle="tooltip"  data-size="lg"  data-original-title="{{__('Edit')}}">
-                                                                <i class="ti ti-pencil text-white"></i>
+                                                            <a href="#" class="mx-3" data-url="{{ route('bank-account.edit',$account->id) }}" data-ajax-popup="true" title="{{__('Edit')}}" data-title="{{__('Edit Bank Account')}}"data-bs-toggle="tooltip"  data-size="lg"  data-original-title="{{__('Edit')}}">
+                                                                                             <img src="{{ asset('assets/images/design-images/All/edit.svg') }}" alt="" style="width: 40px;">
+                                                               
                                                             </a>
                                                         </div>
                                                     @endcan
                                                     @can('delete bank account')
                                                             <div class="action-btn ">
                                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['bank-account.destroy', $account->id],'id'=>'delete-form-'.$account->id]) !!}
-                                                                <a href="#" class="mx-3 btn btn-sm align-items-center bs-pass-para bg-danger" data-bs-toggle="tooltip" title="{{__('Delete')}}" data-original-title="{{__('Delete')}}" data-confirm="{{__('Are You Sure?').'|'.__('This action can not be undone. Do you want to continue?')}}" data-confirm-yes="document.getElementById('delete-form-{{$account->id}}').submit();">
-                                                                    <i class="ti ti-trash text-white text-white"></i>
+                                                                <a href="#" class="mx-3" data-bs-toggle="tooltip" title="{{__('Delete')}}" data-original-title="{{__('Delete')}}" data-confirm="{{__('Are You Sure?').'|'.__('This action can not be undone. Do you want to continue?')}}" data-confirm-yes="document.getElementById('delete-form-{{$account->id}}').submit();">
+                                                                                             <img src="{{ asset('assets/images/design-images/All/delet.svg') }}" alt="" style="width: 40px;">
+                                                                   
                                                                 </a>
                                                                 {!! Form::close() !!}
                                                             </div>

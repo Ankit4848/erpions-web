@@ -639,6 +639,7 @@ Route::group(['middleware' => ['verified']], function () {
             ],
         ],
         function () {
+            Route::get('reports', [ReportController::class, 'reports'])->name('reports');
             Route::get('report/income-summary', [ReportController::class, 'incomeSummary'])->name('report.income.summary');
             Route::get('report/expense-summary', [ReportController::class, 'expenseSummary'])->name('report.expense.summary');
             Route::get('report/income-vs-expense-summary', [ReportController::class, 'incomeVsExpenseSummary'])->name('report.income.vs.expense.summary');

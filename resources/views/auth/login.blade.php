@@ -47,9 +47,9 @@
 @endsection
 
 @section('content')
-    <div class="card-body">
+    <div class="card-body login-body-filed">
         <div>
-            <h2 class="mb-3 f-w-600">{{ __('Login') }}</h2>
+            <h2 class="login-title">{{ __('Login to') }} <span style="color: #6356FA;"> {{ __('ERPIEONS') }} </span></h2>
         </div>
         {{ Form::open(['route' => 'login', 'method' => 'post', 'id' => 'loginForm', 'class' => 'login-form', 'class'=>'needs-validation', 'novalidate']) }}
         @if (session('status'))
@@ -59,8 +59,8 @@
         @endif
         <div class="custom-login-form">
             <div class="form-group mb-3">
-                <label class="form-label">{{ __('Email') }}</label>
-                {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => __('Enter Your Email'), 'required' => 'required']) }}
+                <label class="form-label login-form-label">{{ __('Email Address') }}</label>
+                {{ Form::text('email', null, ['class' => 'form-control login-form-control', 'placeholder' => __('Enter Your Email'), 'required' => 'required']) }}
                 @error('email')
                     <span class="error invalid-email text-danger" role="alert">
                         <strong>{{ $message }}</strong>
@@ -68,20 +68,20 @@
                 @enderror
             </div>
             <div class="form-group mb-3">
-                <label class="form-label">{{ __('Password') }}</label>
-                {{ Form::password('password', ['class' => 'form-control', 'placeholder' => __('Enter Your Password'), 'id' => 'input-password', 'required' => 'required']) }}
+                <label class="form-label login-form-label">{{ __('Password') }}</label>
+                {{ Form::password('password', ['class' => 'form-control login-form-control', 'placeholder' => __('Enter Your Password'), 'id' => 'input-password', 'required' => 'required']) }}
                 @error('password')
-                    <span class="error invalid-password text-danger" role="alert">
+                    <span class="error invalid-password text-danger " role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
             <div class="form-group mb-4">
-                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                <div class="d-flex flex-wrap align-items-center justify-content-end">
 
                     @if (Route::has('password.request'))
                         <span><a href="{{ route('password.request', $lang) }}"
-                                tabindex="0">{{ __('Forgot your password?') }}</a></span>
+                                tabindex="0" style="color: #737373;">{{ __('Forgot your password?') }}</a></span>
                     @endif
                 </div>
             </div>
@@ -109,11 +109,11 @@
             @endif
 
             <div class="d-grid">
-                {{ Form::submit(__('Login'), ['class' => 'btn btn-primary mt-2', 'id' => 'saveBtn']) }}
+                {{ Form::submit(__('Login'), ['class' => 'btn btn-logins', 'id' => 'saveBtn']) }}
             </div>
             @if ($settings['enable_signup'] == 'on')
-                <p class="my-4 text-center">{{ __("Don't have an account?") }}
-                    <a href="{{ route('register', ['0',$lang]) }}" class="text-primary">{{ __('Register') }}</a>
+                <p class="my-4 text-center" style="font-weight: 500;">{{ __("Don't have an account?") }}
+                    <a href="{{ route('register', ['0',$lang]) }}" style="color: #6356FA;">{{ __('Sign Up') }}</a>
                 </p>
             @endif
         </div>

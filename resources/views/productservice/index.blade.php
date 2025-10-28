@@ -10,15 +10,15 @@
 @endsection
 @section('action-btn')
     <div class="float-end">
-        <a href="#" data-size="md"  data-bs-toggle="tooltip" title="{{__('Import')}}" data-url="{{ route('productservice.file.import') }}" data-ajax-popup="true" data-title="{{__('Import product CSV file')}}" class="btn btn-sm bg-brown-subtitle me-1">
-            <i class="ti ti-file-import"></i>
+        <a href="#" data-size="md"  data-bs-toggle="tooltip" title="{{__('Import')}}" data-url="{{ route('productservice.file.import') }}" data-ajax-popup="true" data-title="{{__('Import product CSV file')}}" class=" me-1">
+                        <img src="{{ asset('assets/images/design-images/All/table-1.svg') }}" alt="" style="width: 37px;">
         </a>
-        <a href="{{route('productservice.export')}}" data-bs-toggle="tooltip" title="{{__('Export')}}" class="btn btn-sm btn-secondary me-1">
-            <i class="ti ti-file-export"></i>
+        <a href="{{route('productservice.export')}}" data-bs-toggle="tooltip" title="{{__('Export')}}" class="me-1">
+                         <img src="{{ asset('assets/images/design-images/All/table-2.svg') }}" alt="" style="width: 37px;">
         </a>
 
-        <a href="#" data-size="lg" data-url="{{ route('productservice.create') }}" data-ajax-popup="true" data-bs-toggle="tooltip" data-bs-original-title="{{__('Create')}}" data-title="{{__('Create New Product & Service')}}" class="btn btn-sm btn-primary">
-            <i class="ti ti-plus"></i>
+        <a href="#" data-size="lg" data-url="{{ route('productservice.create') }}" data-ajax-popup="true" data-bs-toggle="tooltip" data-bs-original-title="{{__('Create')}}" data-title="{{__('Create New Product & Service')}}">
+                        <img src="{{ asset('assets/images/design-images/All/table-3.svg') }}" alt="" style="width: 37px;">
         </a>
 
     </div>
@@ -31,7 +31,7 @@
                 <div class="card">
                     <div class="card-body">
                         {{ Form::open(['route' => ['productservice.index'], 'method' => 'GET', 'id' => 'product_service']) }}
-                        <div class="d-flex align-items-center justify-content-end">
+                        <div class="d-flex align-items-center justify-content-start">
                             <div class="col-xl-3 col-lg-3 col-md-6 me-1">
                                 <div class="btn-box">
                                     {{ Form::label('category', __('Category'),['class'=>'form-label']) }}
@@ -39,14 +39,14 @@
                                 </div>
                             </div>
                             <div class="col-auto float-end ms-2 mt-4">
-                                <a href="#" class="btn btn-sm btn-primary me-1"
+                                <a href="#" class="me-1"
                                    onclick="document.getElementById('product_service').submit(); return false;"
                                    data-bs-toggle="tooltip" title="{{ __('apply') }}">
-                                    <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
+                                    <img src="{{ asset('assets/images/design-images/All/S-1.svg') }}" alt="Image" style="width: 41px;">
                                 </a>
-                                <a href="{{ route('productservice.index') }}" class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
+                                <a href="{{ route('productservice.index') }}" data-bs-toggle="tooltip"
                                    title="{{ __('Reset') }}">
-                                    <span class="btn-inner--icon"><i class="ti ti-refresh "></i></span>
+                                    <img src="{{ asset('assets/images/design-images/All/S-2.svg') }}" alt="Image" style="width: 41px;">
                                 </a>
                             </div>
 

@@ -19,7 +19,7 @@
     <a href="#" class="danger delete-conversation"><i class="ti ti-trash"></i> {{__('Delete Conversation')}}</a>
 </div>
 {{-- shared photos --}}
-<div class="messenger-infoView-shared">
-    <p class="messenger-title">{{__('shared photos')}}</p>
+<div class="messenger-infoView-shared new-shared">
+    <p class="messenger-title SP_title">{{__('shared photos')}}</p>
     <div class="shared-photos-list"></div>
 </div>

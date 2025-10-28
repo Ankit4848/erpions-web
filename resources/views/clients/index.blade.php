@@ -28,7 +28,7 @@
         <div class="col-xxl-3 col-lg-4 col-sm-6 mb-4">
             <div class="client-card d-flex flex-column h-100">
                 <div class="client-info-wrp d-flex flex-1 align-items-center gap-3 border-bottom pb-3 mb-3">
-                    <div class="client-image rounded-1 border-1 border border-primary">
+                    <div class="client-image " style="border-radius: 100px;">
                         <img src="{{ !empty($client->avatar) ? asset(Storage::url('uploads/avatar/' . $client->avatar)) : asset(Storage::url('uploads/avatar/avatar.png')) }}"
                             alt="client-image" height="100%" width="100%">
                     </div>
@@ -127,13 +127,15 @@
                     @endphp
                     <div class="date d-flex align-items-center gap-2">
                         <div class="date-icon d-flex align-items-center justify-content-center">
-                            <i class="f-16 ti ti-calendar text-white"></i>
+                                                      <img src="{{ asset('assets/images/design-images/dashboard/user-calander.svg') }}" alt="calendar">
+
                         </div>
                         <span class="text-sm">{{ $date }}</span>
                     </div>
                     <div class="time d-flex align-items-center gap-2">
                         <div class="time-icon d-flex align-items-center justify-content-center">
-                            <i class="f-16 ti ti-clock text-white"></i>
+                                                      <img src="{{ asset('assets/images/design-images/dashboard/user-time.svg') }}" alt="calendar">
+
                         </div>
                         <span class="text-sm">{{ $time }}</span>
                     </div>
@@ -145,7 +147,7 @@
         <a href="#" data-size="md" data-url="{{ route('clients.create') }}" data-ajax-popup="true"
             data-bs-toggle="tooltip" data-bs-original-title="{{ __('Create New Client') }}"
             class="btn-addnew-project border-primary">
-            <div class="bg-primary proj-add-icon">
+            <div class="proj-add-icon">
                 <i class="ti ti-plus"></i>
             </div>
             <h6 class="mt-3 mb-2">{{ __('Create Client') }}</h6>

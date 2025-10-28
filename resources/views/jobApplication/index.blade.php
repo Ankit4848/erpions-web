@@ -156,7 +156,7 @@
                     <div class="card-body">
                         {{ Form::open(['route' => ['job-application.index'], 'method' => 'get', 'id' => 'applicarion_filter']) }}
 
-                        <div class="row d-flex align-items-end justify-content-end row-gap-1">
+                        <div class="row d-flex align-items-end justify-content-start row-gap-1">
 
                             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                 <div class="btn-box">
@@ -179,14 +179,16 @@
                             </div>
                             <div class="col-auto float-end">
 
-                                <a href="#" class="btn btn-sm btn-primary me-1"
+                                <a href="#" class="me-1"
                                     onclick="document.getElementById('applicarion_filter').submit(); return false;"
                                     data-bs-toggle="tooltip" data-bs-original-title="{{ __('Apply') }}">
-                                    <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
+                                    <img src="{{ asset('assets/images/design-images/All/S-1.svg') }}" alt="" style="width: 40px;">
+
                                 </a>
-                                <a href="{{ route('job-application.index') }}" class="btn btn-sm btn-danger"
+                                <a href="{{ route('job-application.index') }}" class=""
                                     data-bs-toggle="tooltip" title="{{ __('Reset') }}">
-                                    <span class="btn-inner--icon"><i class="ti ti-refresh text-white-off "></i></span>
+                                  <img src="{{ asset('assets/images/design-images/All/S-2.svg') }}" alt="" style="width: 40px;">
+
                                 </a>
                             </div>
 

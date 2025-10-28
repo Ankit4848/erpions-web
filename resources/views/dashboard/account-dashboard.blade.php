@@ -1,246 +1,1003 @@
 @extends('layouts.admin')
 @section('page-title')
-    {{__('Dashboard')}}
+    {{__('Welcome Back,')}} {{\Auth::user()->name }}!
 @endsection
 @push('script-page')
     <script>
         @if(\Auth::user()->can('show account dashboard'))
-        (function () {
-            var chartBarOptions = {
-                series: [
-                    {
-                        name: "{{__('Income')}}",
-                        data:{!! json_encode($incExpLineChartData['income']) !!}
-                    },
-                    {
-                        name: "{{__('Expense')}}",
-                        data: {!! json_encode($incExpLineChartData['expense']) !!}
-                    }
-                ],
+            (function () {
+                var chartBarOptions = {
+                    series: [
+                        {
+                            name: "{{__('Income')}}",
+                            data:{!! json_encode($incExpLineChartData['income']) !!}
+                        },
+                        {
+                            name: "{{__('Expense')}}",
+                            data: {!! json_encode($incExpLineChartData['expense']) !!}
+                        }
+                    ],
 
-                chart: {
-                    height: 250,
-                    type: 'area',
-                    // type: 'line',
-                    dropShadow: {
-                        enabled: true,
-                        color: '#000',
-                        top: 18,
-                        left: 7,
-                        blur: 10,
-                        opacity: 0.2
+                    chart: {
+                        height: 250,
+                        type: 'area',
+                        // type: 'line',
+                        dropShadow: {
+                            enabled: true,
+                            color: '#000',
+                            top: 18,
+                            left: 7,
+                            blur: 10,
+                            opacity: 0.2
+                        },
+                        toolbar: {
+                            show: false
+                        }
                     },
-                    toolbar: {
-                        show: false
-                    }
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                stroke: {
-                    width: 2,
-                    curve: 'smooth'
-                },
-                title: {
-                    text: '',
-                    align: 'left'
-                },
-                xaxis: {
-                    categories:{!! json_encode($incExpLineChartData['day']) !!},
+                    dataLabels: {
+                        enabled: false
+                    },
+                    stroke: {
+                        width: 2,
+                        curve: 'smooth'
+                    },
                     title: {
-                        text: '{{ __("Date") }}'
-                    }
-                },
-                colors: ['#6fd944', '#ff3a6e'],
-
-
-                grid: {
-                    strokeDashArray: 4,
-                },
-                legend: {
-                    show: false,
-                },
-                // markers: {
-                //     size: 4,
-                //     colors: ['#6fd944', '#FF3A6E'],
-                //     opacity: 0.9,
-                //     strokeWidth: 2,
-                //     hover: {
-                //         size: 7,
-                //     }
-                // },
-                yaxis: {
-                    title: {
-                        text: '{{ __("Amount") }}'
+                        text: '',
+                        align: 'left'
                     },
+                    xaxis: {
+                        categories:{!! json_encode($incExpLineChartData['day']) !!},
+                        title: {
+                            text: '{{ __("Date") }}'
+                        }
+                    },
+                    colors: ['#6fd944', '#ff3a6e'],
 
-                }
 
-            };
-            var arChart = new ApexCharts(document.querySelector("#cash-flow"), chartBarOptions);
-            arChart.render();
-        })();
-
-        (function () {
-            var options = {
-                chart: {
-                    height: 180,
-                    type: 'bar',
-                    toolbar: {
+                    grid: {
+                        strokeDashArray: 4,
+                    },
+                    legend: {
                         show: false,
                     },
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                stroke: {
-                    width: 2,
-                    curve: 'smooth'
-                },
-                series: [{
-                    name: "{{__('Income')}}",
-                    data: {!! json_encode($incExpBarChartData['income']) !!}
-                }, {
-                    name: "{{__('Expense')}}",
-                    data: {!! json_encode($incExpBarChartData['expense']) !!}
-                }],
-                xaxis: {
-                    categories: {!! json_encode($incExpBarChartData['month']) !!},
-                },
-                colors: ['#3ec9d6', '#FF3A6E'],
-                fill: {
-                    type: 'solid',
-                },
-                grid: {
-                    strokeDashArray: 4,
-                },
-                legend: {
-                    show: true,
-                    position: 'top',
-                    horizontalAlign: 'right',
-                },
-                // markers: {
-                //     size: 4,
-                //     colors:  ['#3ec9d6', '#FF3A6E',],
-                //     opacity: 0.9,
-                //     strokeWidth: 2,
-                //     hover: {
-                //         size: 7,
-                //     }
-                // }
-            };
-            var chart = new ApexCharts(document.querySelector("#incExpBarChart"), options);
-            chart.render();
-        })();
-
-        (function () {
-            var options = {
-                chart: {
-                    height: 200,
-                    type: 'donut',
-                },
-                dataLabels: {
-                    enabled: false,
-                },
-                plotOptions: {
-                    pie: {
-                        donut: {
-                            size: '75%',
-                        }
-                    }
-                },
-                series: {!! json_encode($expenseCatAmount) !!},
-                colors: {!! json_encode($expenseCategoryColor) !!},
-                labels: {!! json_encode($expenseCategory) !!},
-                legend: {
-                    show: true
-                }
-            };
-            var chart = new ApexCharts(document.querySelector("#expenseByCategory"), options);
-            chart.render();
-        })();
-
-        (function () {
-            var options = {
-                chart: {
-                    height: 200,
-                    type: 'donut',
-                },
-                dataLabels: {
-                    enabled: false,
-                },
-                plotOptions: {
-                    pie: {
-                        donut: {
-                            size: '75%',
-                        }
-                    }
-                },
-                series: {!! json_encode($incomeCatAmount) !!},
-                colors: {!! json_encode($incomeCategoryColor) !!},
-                labels:  {!! json_encode($incomeCategory) !!},
-                legend: {
-                    show: true
-                }
-            };
-            var chart = new ApexCharts(document.querySelector("#incomeByCategory"), options);
-            chart.render();
-        })();
-
-        (function () {
-            var options = {
-                series: [{{ round($storage_limit,2) }}],
-                chart: {
-                    height: 400,
-                    type: 'radialBar',
-                    offsetY: -20,
-                    sparkline: {
-                        enabled: true
-                    }
-                },
-                plotOptions: {
-                    radialBar: {
-                        startAngle: -90,
-                        endAngle: 90,
-                        track: {
-                            background: "#e7e7e7",
-                            strokeWidth: '97%',
-                            margin: 5, // margin is in pixels
+                    // markers: {
+                    //     size: 4,
+                    //     colors: ['#6fd944', '#FF3A6E'],
+                    //     opacity: 0.9,
+                    //     strokeWidth: 2,
+                    //     hover: {
+                    //         size: 7,
+                    //     }
+                    // },
+                    yaxis: {
+                        title: {
+                            text: '{{ __("Amount") }}'
                         },
-                        dataLabels: {
-                            name: {
-                                show: true
-                            },
-                            value: {
-                                offsetY: -50,
-                                fontSize: '20px'
+
+                    }
+
+                };
+                var arChart = new ApexCharts(document.querySelector("#cash-flow"), chartBarOptions);
+                arChart.render();
+            })();
+
+            (function () {
+                var options = {
+                    chart: {
+                        height: 180,
+                        type: 'bar',
+                        toolbar: {
+                            show: false,
+                        },
+                    },
+                    dataLabels: {
+                        enabled: false
+                    },
+                    stroke: {
+                        width: 2,
+                        curve: 'smooth'
+                    },
+                    series: [{
+                        name: "{{__('Income')}}",
+                        data: {!! json_encode($incExpBarChartData['income']) !!}
+                    }, {
+                        name: "{{__('Expense')}}",
+                        data: {!! json_encode($incExpBarChartData['expense']) !!}
+                    }],
+                    xaxis: {
+                        categories: {!! json_encode($incExpBarChartData['month']) !!},
+                    },
+                    colors: ['#3ec9d6', '#FF3A6E'],
+                    fill: {
+                        type: 'solid',
+                    },
+                    grid: {
+                        strokeDashArray: 4,
+                    },
+                    legend: {
+                        show: true,
+                        position: 'top',
+                        horizontalAlign: 'right',
+                    },
+                    // markers: {
+                    //     size: 4,
+                    //     colors:  ['#3ec9d6', '#FF3A6E',],
+                    //     opacity: 0.9,
+                    //     strokeWidth: 2,
+                    //     hover: {
+                    //         size: 7,
+                    //     }
+                    // }
+                };
+                var chart = new ApexCharts(document.querySelector("#incExpBarChart"), options);
+                chart.render();
+            })();
+
+            (function () {
+                var options = {
+                    chart: {
+                        height: 200,
+                        type: 'donut',
+                    },
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    plotOptions: {
+                        pie: {
+                            donut: {
+                                size: '75%',
                             }
                         }
+                    },
+                    series: {!! json_encode($expenseCatAmount) !!},
+                    colors: {!! json_encode($expenseCategoryColor) !!},
+                    labels: {!! json_encode($expenseCategory) !!},
+                    legend: {
+                        show: true
                     }
-                },
-                grid: {
-                    padding: {
-                        top: -10
-                    }
-                },
-                colors: ["#6FD943"],
-                labels: ['Used'],
-            };
-            var chart = new ApexCharts(document.querySelector("#limit-chart"), options);
-            chart.render();
-        })();
+                };
+                var chart = new ApexCharts(document.querySelector("#expenseByCategory"), options);
+                chart.render();
+            })();
 
+            (function () {
+                var options = {
+                    chart: {
+                        height: 200,
+                        type: 'donut',
+                    },
+                    dataLabels: {
+                        enabled: false,
+                    },
+                    plotOptions: {
+                        pie: {
+                            donut: {
+                                size: '75%',
+                            }
+                        }
+                    },
+                    series: {!! json_encode($incomeCatAmount) !!},
+                    colors: {!! json_encode($incomeCategoryColor) !!},
+                    labels:  {!! json_encode($incomeCategory) !!},
+                    legend: {
+                        show: true
+                    }
+                };
+                var chart = new ApexCharts(document.querySelector("#incomeByCategory"), options);
+                chart.render();
+            })();
+
+            (function () {
+                var options = {
+                    series: [{{ round($storage_limit,2) }}],
+                    chart: {
+                        height: 400,
+                        type: 'radialBar',
+                        offsetY: -20,
+                        sparkline: {
+                            enabled: true
+                        }
+                    },
+                    plotOptions: {
+                        radialBar: {
+                            startAngle: -90,
+                            endAngle: 90,
+                            track: {
+                                background: "#e7e7e7",
+                                strokeWidth: '97%',
+                                margin: 5, // margin is in pixels
+                            },
+                            dataLabels: {
+                                name: {
+                                    show: true
+                                },
+                                value: {
+                                    offsetY: -50,
+                                    fontSize: '20px'
+                                }
+                            }
+                        }
+                    },
+                    grid: {
+                        padding: {
+                            top: -10
+                        }
+                    },
+                    colors: ["#6FD943"],
+                    labels: ['Used'],
+                };
+                var chart = new ApexCharts(document.querySelector("#limit-chart"), options);
+                chart.render();
+            })();
         @endif
     </script>
 @endpush
-@section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Dashboard')}}</a></li>
-    <li class="breadcrumb-item">{{__('Account')}}</li>
-@endsection
+
 @section('content')
+
+<!-- =============== Main Header ================= -->
+<div class="main-home-tab-container">
+    <div class="main-home-tab " data-tab="tab1">
+        <img src="{{ asset('assets/images/design-images/dashboard/Hrm-balck.svg') }}" alt="" class="tab-nav-icon-black">
+        <img  src="{{ asset('assets/images/design-images/dashboard/Hrm-blue.svg') }}" alt="" class="tab-nav-icon-blue">
+        HRM
+    </div>
+    <div class="main-home-tab" data-tab="tab2">
+        <img src="{{ asset('assets/images/design-images/dashboard/Crm-black.svg') }}" alt="" class="tab-nav-icon-black">
+        <img  src="{{ asset('assets/images/design-images/dashboard/Crm-blue.svg') }}" alt="" class="tab-nav-icon-blue">
+        CRM
+    </div>
+    <div class="main-home-tab active" data-tab="tab3">
+        <img src="{{ asset('assets/images/design-images/dashboard/home-black.svg') }}" alt="" class="tab-nav-icon-black">
+        <img  src="{{ asset('assets/images/design-images/dashboard/home-blue.svg') }}" alt="" class="tab-nav-icon-blue">
+         Accounting
+    </div>
+    <div class="main-home-tab" data-tab="tab4">
+        <img src="{{ asset('assets/images/design-images/dashboard/Project-black.svg') }}" alt="" class="tab-nav-icon-black">
+        <img  src="{{ asset('assets/images/design-images/dashboard/Project-blue.svg') }}" alt="" class="tab-nav-icon-blue">
+         Project
+    </div>
+    <div class="main-home-tab" data-tab="tab5">
+        <img src="{{ asset('assets/images/design-images/dashboard/Pos-black.svg') }}" alt="" class="tab-nav-icon-black">
+        <img  src="{{ asset('assets/images/design-images/dashboard/Pos-blue.svg') }}" alt="" class="tab-nav-icon-blue">
+        POS
+    </div>
+</div>
+
+<!-- ============== HRM Content =============== -->
+<div class="main-home-tab-content " id="tab1">HRM Content Here...</div>
+
+<!-- ============= CRM Content ================ -->
+<div class="main-home-tab-content" id="tab2">CRM Content Here...</div>
+
+<!-- ========== Accounting Content ============= -->
+<div class="main-home-tab-content active" id="tab3">
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
+                <div class="col-xxl-6">
+                    <div class="row gy-4 mb-4 dash-row">
+                        <div class="col-sm-3 col-12 dash-info-card">
+                            <div class="info-card-inner mb-0">
+                                <div class="info-icon-wrp accounting-box">
+                                    <img src="{{ asset('assets/images/design-images/all/Tc-acount.svg') }}" alt=""
+                                        class="dash-nav-icon-blue">
+                                    <h3 class="mb-0">{{ \Auth::user()->countCustomers() }}</h3>
+                                    <div class="info-content">
+                                        <h2 class="box-titles"><a href="{{ route('customer.index') }}"
+                                                class="dashboard-link">{{ __('Total Customers') }}</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-12 dash-info-card">
+                            <div class="info-card-inner mb-0">
+
+                                <div class="info-icon-wrp accounting-box">
+
+                                    <img src="{{ asset('assets/images/design-images/all/Tv-acount.svg') }}" alt=""
+                                        class="dash-nav-icon-blue">
+
+
+                                    <h3 class="mb-0">{{ \Auth::user()->countVenders() }}</h3>
+
+                                    <div class="info-content">
+                                        <h2 class="box-titles"><a href="{{ route('vender.index') }}"
+                                                class=" dashboard-link">{{ __('Total Vendors') }}</a></h2>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-12 dash-info-card">
+                            <div class="info-card-inner mb-0">
+                                <div class="info-icon-wrp  accounting-box">
+
+                                    <img src="{{ asset('assets/images/design-images/all/Ti-acount.svg') }}" alt=""
+                                        class="dash-nav-icon-blue">
+
+
+                                    <h3 class="mb-0">{{ \Auth::user()->countInvoices() }}</h3>
+
+                                    <div class="info-content">
+                                        <h2 class="box-titles"><a href="{{ route('invoice.index') }}"
+                                                class=" dashboard-link">{{ __('Total Invoices') }}</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-12 dash-info-card">
+                            <div class="info-card-inner mb-0">
+                                <div class="info-icon-wrp accounting-box">
+
+                                    <img src="{{ asset('assets/images/design-images/all/Tb-acount.svg') }}" alt=""
+                                        class="dash-nav-icon-blue">
+
+                                    <h3 class="mb-0">{{ \Auth::user()->countBills() }}</h3>
+
+                                    <div class="info-content">
+                                        <h2 class="box-titles"><a href="{{ route('bill.index') }}"
+                                                class=" dashboard-link">{{ __('Total Bills') }}</a></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="height: 370px;">
+                        <div class="card-header">
+                            <h5 class="mt-1 mb-0">{{__('Cashflow')}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="cash-flow"></div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="height: 300px;">
+                        <div class="card-header">
+                            <h5>{{__('Income By Category')}}
+                                <span class="float-end text-muted">{{__('Year').' - '.$currentYear}}</span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="incomeByCategory"></div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="height: 300px;">
+                        <div class="card-header">
+                            <h5>{{__('Expense By Category')}}
+                                <span class="float-end text-muted">{{__('Year').' - '.$currentYear}}</span>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="expenseByCategory"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mt-1 mb-0">{{__('Recent Invoices')}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>{{__('Customer')}}</th>
+                                            <th>{{__('Issue Date')}}</th>
+                                            <th>{{__('Due Date')}}</th>
+                                            <th>{{__('Amount')}}</th>
+                                            <th>{{__('Status')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($recentInvoice as $invoice)
+                                        <tr>
+                                            <td>{{\Auth::user()->invoiceNumberFormat($invoice->invoice_id)}}</td>
+                                            <td>{{!empty($invoice->customer_name)? $invoice->customer_name:'' }} </td>
+                                            <td>{{ Auth::user()->dateFormat($invoice->issue_date) }}</td>
+                                            <td>{{ Auth::user()->dateFormat($invoice->due_date) }}</td>
+                                            <td>{{\Auth::user()->priceFormat($invoice->getTotal())}}</td>
+                                            <td>
+                                                @if($invoice->status == 0)
+                                                <span class="p-2 px-3 rounded badge status_badge bg-secondary">{{
+                                                    __(\App\Models\Invoice::$statues[$invoice->status]) }}</span>
+                                                @elseif($invoice->status == 1)
+                                                <span class="p-2 px-3 rounded badge status_badge bg-warning">{{
+                                                    __(\App\Models\Invoice::$statues[$invoice->status]) }}</span>
+                                                @elseif($invoice->status == 2)
+                                                <span class="p-2 px-3 rounded badge status_badge bg-danger">{{
+                                                    __(\App\Models\Invoice::$statues[$invoice->status]) }}</span>
+                                                @elseif($invoice->status == 3)
+                                                <span class="p-2 px-3 rounded badge status_badge bg-info">{{
+                                                    __(\App\Models\Invoice::$statues[$invoice->status]) }}</span>
+                                                @elseif($invoice->status == 4)
+                                                <span class="p-2 px-3 rounded badge status_badge bg-primary">{{
+                                                    __(\App\Models\Invoice::$statues[$invoice->status]) }}</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="6">
+                                                <div class="text-center">
+                                                    <h6>{{__('There is no recent invoice')}}</h6>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mt-1 mb-0">{{__('Recent Bills')}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>{{__('Vendor')}}</th>
+                                            <th>{{__('Bill Date')}}</th>
+                                            <th>{{__('Due Date')}}</th>
+                                            <th>{{__('Amount')}}</th>
+                                            <th>{{__('Status')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($recentBill as $bill)
+                                        <tr>
+                                            <td>{{\Auth::user()->billNumberFormat($bill->bill_id)}}</td>
+                                            <td>{{!empty($bill->vender_name)? $bill->vender_name : '-' }} </td>
+                                            <td>{{ Auth::user()->dateFormat($bill->bill_date) }}</td>
+                                            <td>{{ Auth::user()->dateFormat($bill->due_date) }}</td>
+                                            <td>{{\Auth::user()->priceFormat($bill->getTotal())}}</td>
+                                            <td>
+                                                @if($bill->status == 0)
+                                                <span class="p-2 px-3 status_badge rounded badge bg-secondary">{{
+                                                    __(\App\Models\Bill::$statues[$bill->status]) }}</span>
+                                                @elseif($bill->status == 1)
+                                                <span class="p-2 px-3 status_badge rounded badge bg-warning">{{
+                                                    __(\App\Models\Bill::$statues[$bill->status]) }}</span>
+                                                @elseif($bill->status == 2)
+                                                <span class="p-2 px-3 status_badge rounded badge bg-danger">{{
+                                                    __(\App\Models\Bill::$statues[$bill->status]) }}</span>
+                                                @elseif($bill->status == 3)
+                                                <span class="p-2 px-3 status_badge rounded badge bg-info">{{
+                                                    __(\App\Models\Bill::$statues[$bill->status]) }}</span>
+                                                @elseif($bill->status == 4)
+                                                <span class="p-2 px-3 status_badge rounded badge bg-primary">{{
+                                                    __(\App\Models\Bill::$statues[$bill->status]) }}</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="6">
+                                                <div class="text-center">
+                                                    <h6>{{__('There is no recent bill')}}</h6>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-6">
+                    <div class="card income-card">
+                        <div class="card-header header-icon py-4">
+                            <h5>{{__('Income Vs Expense')}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="income-card-inner d-flex justify-content-between">
+                                <div class="income-card-left">
+                                    <div class="income-info iday">
+                                        <div class="income-icon-wrp d-flex align-items-center">
+                                            <div class="income-text">
+                                                <span>{{__('Income Today')}}</span>
+                                            </div>
+                                            <h4 class="mb-2 incom-count">
+                                                {{\Auth::user()->priceFormat(\Auth::user()->todayIncome())}}</h4>
+                                        </div>
+                                        <div class="progress-line"></div>
+                                    </div>
+                                    <div class="income-info imonth">
+                                        <div class="income-icon-wrp d-flex align-items-center">
+                                            <div class="income-text">
+                                                <span>{{__('Income This Month')}}</span>
+                                            </div>
+                                            <h4 class="mb-2 incom-count">
+                                                {{\Auth::user()->priceFormat(\Auth::user()->incomeCurrentMonth())}}</h4>
+                                        </div>
+                                        <div class="progress-line"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <img src="{{ asset('assets/images/design-images/All/Center-bg.svg') }}" alt="">
+                                </div>
+                                <div class="income-card-right">
+                                    <div class="income-info eday">
+                                        <div class="income-icon-wrp d-flex align-items-center">
+                                            <div class="income-text">
+                                                <span>{{__('Expense Today')}}</span>
+                                            </div>
+                                            <h4 class="mb-2 incom-count">
+                                                {{\Auth::user()->priceFormat(\Auth::user()->todayExpense())}}</h4>
+                                        </div>
+                                        <div class="progress-line"></div>
+                                    </div>
+                                    <div class="income-info emonth">
+                                        <div class="income-icon-wrp d-flex align-items-center">
+                                            <div class="income-text">
+                                                <span>{{__('Expense This Month')}}</span>
+                                            </div>
+                                            <h4 class="mb-2 incom-count">
+                                                {{\Auth::user()->priceFormat(\Auth::user()->expenseCurrentMonth())}}</h4>
+                                        </div>
+                                        <div class="progress-line"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" style="height: 230px;">
+                        <div class="card-header" style="border-bottom: 0px !important;">
+                            <h5 class="mt-1 mb-0">{{__('Account Balance')}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>{{__('Bank')}}</th>
+                                            <th>{{__('Holder Name')}}</th>
+                                            <th>{{__('Balance')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($bankAccountDetail as $bankAccount)
+
+                                        <tr class="font-style">
+                                            <td>{{$bankAccount->bank_name}}</td>
+                                            <td>{{$bankAccount->holder_name}}</td>
+                                            <td>{{\Auth::user()->priceFormat($bankAccount->opening_balance)}}</td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="text-center">
+                                                    <h6>{{__('there is no account balance')}}</h6>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5>{{__('Income & Expense')}}
+                                <span class="float-end text-muted">{{__('Current Year').' - '.$currentYear}}</span>
+                            </h5>
+
+                        </div>
+                        <div class="card-body">
+                            <div id="incExpBarChart"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mt-1 mb-0">{{__('Latest Income')}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>{{__('Date')}}</th>
+                                            <th>{{__('Customer')}}</th>
+                                            <th>{{__('Amount Due')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($latestIncome as $income)
+                                        <tr>
+                                            <td>{{\Auth::user()->dateFormat($income->date)}}</td>
+                                            <td>{{!empty($income->customer)?$income->customer->name:'-'}}</td>
+                                            <td>{{\Auth::user()->priceFormat($income->amount)}}</td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="text-center">
+                                                    <h6>{{__('There is no latest income')}}</h6>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mt-1 mb-0">{{__('Latest Expense')}}</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>{{__('Date')}}</th>
+                                            <th>{{__('Vendor')}}</th>
+                                            <th>{{__('Amount Due')}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        <tr>
+                                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur non illum inventore expedita dolor ipsa aut nesciunt veniam ad corrupti mollitia molestiae tenetur qui tempore error earum quisquam at reiciendis veritatis rem unde, odio ipsam. Voluptatibus suscipit hic fugit quia necessitatibus id odio dicta deserunt. Officia dicta debitis odit sit fuga. Sapiente tempora id hic explicabo minus. Corporis facilis quod totam atque ullam voluptatibus sit error cumque rem commodi? Quo consectetur nobis inventore atque voluptatum dolorem maxime, soluta vel sint incidunt hic autem ad ipsam porro fuga veritatis pariatur rerum. Nihil libero pariatur voluptatibus voluptas placeat accusamus facilis quibusdam? Tempore.</td>
+                                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur non illum inventore expedita dolor ipsa aut nesciunt veniam ad corrupti mollitia molestiae tenetur qui tempore error earum quisquam at reiciendis veritatis rem unde, odio ipsam. Voluptatibus suscipit hic fugit quia necessitatibus id odio dicta deserunt. Officia dicta debitis odit sit fuga. Sapiente tempora id hic explicabo minus. Corporis facilis quod totam atque ullam voluptatibus sit error cumque rem commodi? Quo consectetur nobis inventore atque voluptatum dolorem maxime, soluta vel sint incidunt hic autem ad ipsam porro fuga veritatis pariatur rerum. Nihil libero pariatur voluptatibus voluptas placeat accusamus facilis quibusdam? Tempore.</td>
+                                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur non illum inventore expedita dolor ipsa aut nesciunt veniam ad corrupti mollitia molestiae tenetur qui tempore error earum quisquam at reiciendis veritatis rem unde, odio ipsam. Voluptatibus suscipit hic fugit quia necessitatibus id odio dicta deserunt. Officia dicta debitis odit sit fuga. Sapiente tempora id hic explicabo minus. Corporis facilis quod totam atque ullam voluptatibus sit error cumque rem commodi? Quo consectetur nobis inventore atque voluptatum dolorem maxime, soluta vel sint incidunt hic autem ad ipsam porro fuga veritatis pariatur rerum. Nihil libero pariatur voluptatibus voluptas placeat accusamus facilis quibusdam? Tempore.</td>
+                                        </tr>
+                                        <!-- @forelse($latestExpense as $expense)
+
+                                        <tr>
+                                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur non illum inventore expedita dolor ipsa aut nesciunt veniam ad corrupti mollitia molestiae tenetur qui tempore error earum quisquam at reiciendis veritatis rem unde, odio ipsam. Voluptatibus suscipit hic fugit quia necessitatibus id odio dicta deserunt. Officia dicta debitis odit sit fuga. Sapiente tempora id hic explicabo minus. Corporis facilis quod totam atque ullam voluptatibus sit error cumque rem commodi? Quo consectetur nobis inventore atque voluptatum dolorem maxime, soluta vel sint incidunt hic autem ad ipsam porro fuga veritatis pariatur rerum. Nihil libero pariatur voluptatibus voluptas placeat accusamus facilis quibusdam? Tempore.</td>
+                                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur non illum inventore expedita dolor ipsa aut nesciunt veniam ad corrupti mollitia molestiae tenetur qui tempore error earum quisquam at reiciendis veritatis rem unde, odio ipsam. Voluptatibus suscipit hic fugit quia necessitatibus id odio dicta deserunt. Officia dicta debitis odit sit fuga. Sapiente tempora id hic explicabo minus. Corporis facilis quod totam atque ullam voluptatibus sit error cumque rem commodi? Quo consectetur nobis inventore atque voluptatum dolorem maxime, soluta vel sint incidunt hic autem ad ipsam porro fuga veritatis pariatur rerum. Nihil libero pariatur voluptatibus voluptas placeat accusamus facilis quibusdam? Tempore.</td>
+                                            <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur non illum inventore expedita dolor ipsa aut nesciunt veniam ad corrupti mollitia molestiae tenetur qui tempore error earum quisquam at reiciendis veritatis rem unde, odio ipsam. Voluptatibus suscipit hic fugit quia necessitatibus id odio dicta deserunt. Officia dicta debitis odit sit fuga. Sapiente tempora id hic explicabo minus. Corporis facilis quod totam atque ullam voluptatibus sit error cumque rem commodi? Quo consectetur nobis inventore atque voluptatum dolorem maxime, soluta vel sint incidunt hic autem ad ipsam porro fuga veritatis pariatur rerum. Nihil libero pariatur voluptatibus voluptas placeat accusamus facilis quibusdam? Tempore.</td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="4">
+                                                <div class="text-center">
+                                                    <h6>{{__('There is no latest expense')}}</h6>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforelse -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="height: 300px;">
+                        <div class="card-header">
+                            <h5>{{__('Storage Limit')}}
+                                <small class="float-end text-muted">{{ $users->storage_limit . 'MB' }} / {{
+                                    $plan->storage_limit . 'MB' }}</small>
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="limit-chart"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-xxl-6">
+                    <div class="card" style="height: 300px">
+                        <div class="card-body">
+                            <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                        href="#invoice_weekly_statistics" role="tab" aria-controls="pills-home"
+                                        aria-selected="true">{{__('Invoices Weekly Statistics')}}</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                        href="#invoice_monthly_statistics" role="tab" aria-controls="pills-profile"
+                                        aria-selected="false">{{__('Invoices Monthly
+                                        Statistics')}}</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="invoice_weekly_statistics" role="tabpanel"
+                                    aria-labelledby="pills-home-tab">
+                                    <div class="table-responsive">
+                                        <table class="table align-items-center mb-0 new-border-ss">
+                                            <tbody class="list">
+                                                <tr>
+                                                    <td>
+                                                        <h5 class="mb-0">{{__('Total')}}</h5>
+                                                        <p class="text-muted text-sm mb-0 mt-1">{{__('Invoice Generated')}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td>
+                                                        <h4>{{\Auth::user()->priceFormat($weeklyInvoice['invoiceTotal'])}}
+                                                        </h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5 class="mb-0">{{__('Total')}}</h5>
+                                                        <p class="text-muted text-sm mb-0 mt-1">{{__('Paid')}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <h4>{{\Auth::user()->priceFormat($weeklyInvoice['invoicePaid'])}}
+                                                        </h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5 class="mb-0">{{__('Total')}}</h5>
+                                                        <p class="text-muted text-sm mb-0 mt-1">{{__('Due')}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <h4>{{\Auth::user()->priceFormat($weeklyInvoice['invoiceDue'])}}
+                                                        </h4>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="invoice_monthly_statistics" role="tabpanel"
+                                    aria-labelledby="pills-profile-tab">
+                                    <div class="table-responsive">
+                                        <table class="table align-items-center mb-0 new-border-ss">
+                                            <tbody class="list">
+                                                <tr>
+                                                    <td>
+                                                        <h5 class="mb-0">{{__('Total')}}</h5>
+                                                        <p class="text-muted text-sm mb-0 mt-">{{__('Invoice Generated')}}
+                                                        </p>
+
+                                                    </td>
+                                                    <td>
+                                                        <h4>{{\Auth::user()->priceFormat($monthlyInvoice['invoiceTotal'])}}
+                                                        </h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5 class="mb-0">{{__('Total')}}</h5>
+                                                        <p class="text-muted text-sm mb-0 mt-">{{__('Paid')}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <h4>{{\Auth::user()->priceFormat($monthlyInvoice['invoicePaid'])}}
+                                                        </h4>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <h5 class="mb-0">{{__('Total')}}</h5>
+                                                        <p class="text-muted text-sm mb-0 mt-">{{__('Due')}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <h4>{{\Auth::user()->priceFormat($monthlyInvoice['invoiceDue'])}}
+                                                        </h4>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                </div>
+
+                <div class="col-xxl-6">
+                    <div class="card" style="height: 300px">
+                        <div class="card-body">
+                            <ul class="nav nav-pills mb-5" id="pills-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                                                href="#bills_weekly_statistics" role="tab" aria-controls="pills-home"
+                                                aria-selected="true">{{__('Bills Weekly Statistics')}}</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                                                href="#bills_monthly_statistics" role="tab" aria-controls="pills-profile"
+                                                aria-selected="false">{{__('Bills Monthly
+                                                Statistics')}}</a>
+                                        </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                        <div class="tab-pane fade show active" id="bills_weekly_statistics" role="tabpanel"
+                                            aria-labelledby="pills-home-tab">
+                                            <div class="table-responsive">
+                                                <table class="table align-items-center mb-0 new-border-ss">
+                                                    <tbody class="list">
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mb-0">{{__('Total')}}</h5>
+                                                                <p class="text-muted text-sm mb-0 mt-1">{{__('Bill
+                                                                    Generated')}}</p>
+
+                                                            </td>
+                                                            <td>
+                                                                <h4>{{\Auth::user()->priceFormat($weeklyBill['billTotal'])}}
+                                                                </h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mb-0">{{__('Total')}}</h5>
+                                                                <p class="text-muted text-sm mb-0 mt-1">{{__('Paid')}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <h4>{{\Auth::user()->priceFormat($weeklyBill['billPaid'])}}
+                                                                </h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mb-0">{{__('Total')}}</h5>
+                                                                <p class="text-muted text-sm mb-0 mt-1">{{__('Due')}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <h4>{{\Auth::user()->priceFormat($weeklyBill['billDue'])}}
+                                                                </h4>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="bills_monthly_statistics" role="tabpanel"
+                                            aria-labelledby="pills-profile-tab">
+                                            <div class="table-responsive">
+                                                <table class="table align-items-center mb-0 new-border-ss">
+                                                    <tbody class="list">
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mb-0">{{__('Total')}}</h5>
+                                                                <p class="text-muted text-sm mb-0">{{__('Bill Generated')}}
+                                                                </p>
+
+                                                            </td>
+                                                            <td>
+                                                                <h4>{{\Auth::user()->priceFormat($monthlyBill['billTotal'])}}
+                                                                </h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mb-0">{{__('Total')}}</h5>
+                                                                <p class="text-muted text-sm mb-0">{{__('Paid')}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <h4>{{\Auth::user()->priceFormat($monthlyBill['billPaid'])}}
+                                                                </h4>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <h5 class="mb-0">{{__('Total')}}</h5>
+                                                                <p class="text-muted text-sm mb-0">{{__('Due')}}</p>
+                                                            </td>
+                                                            <td>
+                                                                <h4>{{\Auth::user()->priceFormat($monthlyBill['billDue'])}}
+                                                                </h4>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+
+                <div class="col-xxl-12">
+                    <div class="card">
+                                    <div class="card-header">
+                                        <h5>{{__('Goal')}}</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        @forelse($goals as $goal)
+                                        @php
+                                        $total= $goal->target($goal->type,$goal->from,$goal->to,$goal->amount)['total'];
+                                        $percentage=$goal->target($goal->type,$goal->from,$goal->to,$goal->amount)['percentage'];
+                                        $per=number_format($goal->target($goal->type,$goal->from,$goal->to,$goal->amount)['percentage'],
+                                        Utility::getValByName('decimal_number'), '.', '');
+                                        @endphp
+                                        <div class="card border-success border-2 border-bottom-0 border-start-0 border-end-0">
+                                            <div class="card-body">
+                                                <div class="form-check p-0">
+                                                    <label class="form-check-label d-block" for="customCheckdef1">
+                                                        <span>
+                                                            <span class="row align-items-center">
+                                                                <span class="col">
+                                                                    <span
+                                                                        class="text-muted text-sm d-block mb-1">{{__('Name')}}</span>
+                                                                    <h6 class="text-nowrap mb-3 mb-sm-0">{{$goal->name}}
+                                                                    </h6>
+                                                                </span>
+                                                                <span class="col">
+                                                                    <span
+                                                                        class="text-muted text-sm d-block mb-1">{{__('Type')}}</span>
+                                                                    <h6 class="mb-3 mb-sm-0">{{
+                                                                        __(\App\Models\Goal::$goalType[$goal->type]) }}</h6>
+                                                                </span>
+                                                                <span class="col">
+                                                                    <span
+                                                                        class="text-muted text-sm d-block mb-1">{{__('Duration')}}</span>
+                                                                    <h6 class="mb-3 mb-sm-0">{{$goal->from .' To
+                                                                        '.$goal->to}}</h6>
+                                                                </span>
+                                                                <span class="col">
+                                                                    <span
+                                                                        class="text-muted text-sm d-block mb-1">{{__('Target')}}</span>
+                                                                    <h6 class="mb-3 mb-sm-0">
+                                                                        {{\Auth::user()->priceFormat($total).' of '.
+                                                                        \Auth::user()->priceFormat($goal->amount)}}</h6>
+                                                                </span>
+                                                                <span class="col">
+                                                                    <span
+                                                                        class="text-muted text-sm d-block mb-1">{{__('Progress')}}</span>
+                                                                    <h6 class="mb-2 d-block">
+                                                                        {{number_format($goal->target($goal->type,$goal->from,$goal->to,$goal->amount)['percentage'],
+                                                                        Utility::getValByName('decimal_number'), '.', '')}}%
+                                                                    </h6>
+                                                                    <div class="progress mb-0">
+                                                                        @if($per<=33) <div class="progress-bar bg-danger"
+                                                                            style="width: {{$per}}%">
+                                                                    </div>
+                                                                    @elseif($per>=33 && $per<=66) <div
+                                                                        class="progress-bar bg-warning"
+                                                                        style="width: {{$per}}%">
+                                                </div>
+                                                @else
+                                                <div class="progress-bar bg-primary" style="width: {{$per}}%"></div>
+                                                @endif
+                                            </div>
+                                            </span>
+                                            </span>
+                                            </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                    </div>
+                    @empty
+                    <h6 class="text-center">{{__('There is no goal.')}}</h6>
+                    @endforelse
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============= Project Content ======================== -->
+<div class="main-home-tab-content" id="tab4">Project Content Here...</div>
+
+<!-- ================== POS Content ======================= -->
+<div class="main-home-tab-content" id="tab5">POS Content Here...</div>
+
+
+
+
+
+
+        <!-- <div class="row">
                 <div class="col-xxl-7">
                     <div class="row gy-4 mb-4 dash-row">
                         <div class="col-sm-6 col-12 dash-info-card">
@@ -973,8 +1730,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
+                </div>6
                 <div class="col-xxl-12">
                     <div class="card">
                         <div class="card-header">
@@ -1038,9 +1794,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+            </div> -->
+   
+ 
 @endsection
 
 @push('script-page')
@@ -1050,4 +1806,16 @@
             $('p').removeClass('text-sm');
         }
     </script>
+    <script>
+        document.querySelectorAll(".main-home-tab").forEach(tab => {
+            tab.addEventListener("click", function () {
+                document.querySelectorAll(".main-home-tab").forEach(t => t.classList.remove("active"));
+                document.querySelectorAll(".main-home-tab-content").forEach(c => c.classList.remove("active"));
+
+                this.classList.add("active");
+                document.getElementById(this.dataset.tab).classList.add("active");
+            });
+        });
+</script>
+
 @endpush

@@ -27,12 +27,12 @@
 
 @section('action-btn')
     <div class="float-end d-flex">
-        <a href="{{ route('invoice.export') }}" class="btn btn-sm btn-secondary me-2" data-bs-toggle="tooltip" title="{{__('Export')}}">
+        <a href="{{ route('invoice.export') }}" class="btn btn-sm btn-secondary me-2 new-plus-btn-file" data-bs-toggle="tooltip" title="{{__('Export')}}">
             <i class="ti ti-file-export"></i>
         </a>
 
         @can('create invoice')
-            <a href="{{ route('invoice.create', 0) }}" class="btn btn-sm btn-primary" data-bs-toggle="tooltip" title="{{__('Create')}}">
+            <a href="{{ route('invoice.create', 0) }}" class="btn btn-sm btn-primary new-plus-btn" data-bs-toggle="tooltip" title="{{__('Create')}}">
                 <i class="ti ti-plus"></i>
             </a>
         @endcan
@@ -68,14 +68,14 @@
                                 </div>
                             </div>
                             <div class="col-auto float-end ms-2 mt-4">
-                                <a href="#" class="btn btn-sm btn-primary me-1"
+                                <a href="#" class="me-1"
                                    onclick="document.getElementById('customer_submit').submit(); return false;"
                                    data-bs-toggle="tooltip" data-bs-original-title="{{ __('Apply') }}">
-                                    <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
+                                     <img src="{{ asset('assets/images/design-images/All/S-1.svg') }}" alt="" style="width: 41px;">
                                 </a>
-                                <a href="{{ route('invoice.index') }}" class="btn btn-sm btn-danger" data-bs-toggle="tooltip"
+                                <a href="{{ route('invoice.index') }}" class="" data-bs-toggle="tooltip"
                                    data-bs-original-title="{{ __('Reset') }}">
-                                    <span class="btn-inner--icon"><i class="ti ti-refresh text-white-off"></i></span>
+                                   <img src="{{ asset('assets/images/design-images/All/S-2.svg') }}" alt="" style="width: 41px;">
                                 </a>
                             </div>
                         </div>

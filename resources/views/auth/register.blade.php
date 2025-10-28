@@ -42,9 +42,9 @@
 @endsection
 
 @section('content')
-    <div class="card-body">
+    <div class="card-body login-body-filed">
         <div>
-            <h2 class="mb-3 f-w-600">{{ __('Register') }}</h2>
+            <h2 class="login-title">{{ __('Register to') }} <span style="color: #6356FA;"> {{ __('ERPIEONS') }} </span></h2>
         </div>
         <form method="POST" action="{{ route('register.store', ['plan' => $plan]) }}" class='needs-validation' novalidate>
             @if (session('status'))
@@ -55,8 +55,8 @@
             @csrf
             <div class="">
                 <div class="form-group mb-3">
-                    <label for="name" class="form-label">{{ __('Name') }}</label>
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                    <label for="name" class="form-label login-form-label">{{ __('Name') }}</label>
+                    <input id="name" type="text" class="form-control login-form-control @error('name') is-invalid @enderror "
                         name="name" value="{{ old('name') }}" autocomplete="name" autofocus
                         placeholder="{{ __('Enter Name') }}" required="required">
                     @error('name')
@@ -66,8 +66,8 @@
                     @enderror
                 </div>
                 <div class="form-group mb-3">
-                    <label for="email" class="form-label">{{ __('Email') }}</label>
-                    <input class="form-control @error('email') is-invalid @enderror" id="email" type="email"
+                    <label for="email" class="form-label login-form-label">{{ __('Email') }}</label>
+                    <input class="form-control login-form-control @error('email') is-invalid @enderror" id="email" type="email"
                         name="email" value="{{ old('email') }}" autocomplete="email" autofocus
                         placeholder="{{ __('Enter Email') }}" required="required">
                     @error('email')
@@ -77,9 +77,9 @@
                     @enderror
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password" class="form-label">{{ __('Password') }}</label>
+                    <label for="password" class="form-label login-form-label">{{ __('Password') }}</label>
                     <input id="password" type="password" data-indicator="pwindicator"
-                        class="form-control pwstrength @error('password') is-invalid @enderror" name="password"
+                        class="form-control login-form-control pwstrength @error('password') is-invalid @enderror" name="password"
                         autocomplete="new-password" placeholder="{{ __('Enter Password') }}" required="required">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -92,9 +92,9 @@
                     </div>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password_confirmation" class="form-label">{{ __('Password Confirmation') }}</label>
+                    <label for="password_confirmation" class="form-label login-form-label">{{ __('Password Confirmation') }}</label>
                     <input id="password_confirmation" type="password" data-indicator="password_confirmation"
-                        class="form-control pwstrength @error('password_confirmation') is-invalid @enderror"
+                        class="form-control login-form-control pwstrength @error('password_confirmation') is-invalid @enderror"
                         name="password_confirmation" autocomplete="new-password"
                         placeholder="{{ __('Enter Confirm Password') }}" required="required">
                     @error('password_confirmation')
@@ -109,19 +109,19 @@
                 </div>
                 <div class="form-check custom-checkbox">
                     <input type="checkbox" class="form-check-input" id="termsCheckbox" name="terms" required="required">
-                    <label class="form-check-label text-sm" for="termsCheckbox">{{ __('I agree to the ') }}
+                    <label class="form-check-label text-sm" for="termsCheckbox" style="font-weight : 500; color : #434343;">{{ __('I agree to the ') }}
                         @if (is_array(json_decode($setting['menubar_page'])) || is_object(json_decode($setting['menubar_page'])))
                             @foreach (json_decode($setting['menubar_page']) as $key => $value)
                                 @if (in_array($value->menubar_page_name, ['Terms and Conditions']) && isset($value->template_name))
                                     <a href="{{ $value->template_name == 'page_content' ? route('custom.page', $value->page_slug) : $value->page_url }}"
-                                        target="_blank">{{ $value->menubar_page_name }}</a>
+                                        target="_blank" style="color : black;">{{ $value->menubar_page_name }}</a>
                                 @endif
                             @endforeach
                             {{ __('and the ') }}
                             @foreach (json_decode($setting['menubar_page']) as $key => $value)
                                 @if (in_array($value->menubar_page_name, ['Privacy Policy']) && isset($value->template_name))
                                     <a href="{{ $value->template_name == 'page_content' ? route('custom.page', $value->page_slug) : $value->page_url }}"
-                                        target="_blank">{{ $value->menubar_page_name }}</a>
+                                        target="_blank" style="color : black;">{{ $value->menubar_page_name }}</a>
                                 @endif
                             @endforeach
                         @endif
@@ -151,12 +151,12 @@
 
                 <div class="d-grid">
                     <input type="hidden" name="ref_code" value="{{ $ref }}">
-                    <button type="submit" class="btn btn-primary btn-block mt-2">{{ __('Register') }}</button>
+                    <button type="submit" class="btn btn-logins mt-2">{{ __('Register') }}</button>
                 </div>
 
             </div>
-            <p class="my-4 text-center">{{ __('Already have an account?') }} <a href="{{ route('login', $lang) }}"
-                    class="text-primary">{{ __('Login') }}</a></p>
+            <p class="my-4 text-center"  style="font-weight: 500;">{{ __('Already have an account?') }} <a href="{{ route('login', $lang) }}"
+                    style="color: #6356FA;">{{ __('Login') }}</a></p>
         </form>
 
     </div>
