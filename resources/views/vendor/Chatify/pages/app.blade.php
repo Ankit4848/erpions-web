@@ -35,11 +35,10 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="messenger">
-
+        <div class="col-xl-3">
+            <div class="card h-100">
+                <div class="card-body p-0">
+                    
                         {{-- ----------------------Users/Groups lists side---------------------- --}}
                         <div class="messenger-listView">
                             {{-- Header and search bar --}}
@@ -49,8 +48,12 @@
                                         <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
                                     </nav>
                                 </nav>
-                                {{-- Search input --}}
-                                <input type="text" class="messenger-search" placeholder="Search" />
+                                <div class="messenger-search">
+                                    {{-- Search input --}}
+                                <input type="text" class="messenger-search-i" placeholder="Search Chat..." />
+                                <img src="{{ asset('assets/images/lets-icons_search-duotone.png') }}" alt="search icon">
+                                </div>
+                                
                                 {{-- Tabs --}}
                                 <div class="messenger-listView-tabs">
                                     <a href="#" @if($route == 'user') class="active-tab" @endif data-view="users">
@@ -100,6 +103,15 @@
                                 </div>
                             </div>
                         </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-9">
+            
+            <div class="card h-100">
+                <div class="card-body p-0">
+                    <div class="messenger">
+
 
                         {{-- ----------------------Messaging side---------------------- --}}
                         <div class="messenger-messagingView">
@@ -107,7 +119,7 @@
                             <div class="m-header m-header-messaging">
                                 <nav>
                                     {{-- header back button, avatar and user name --}}
-                                    <div style="display: inline-flex;">
+                                    <div class="d-inline-flex align-items-center">
                                         <a href="#" class="show-listView"><i class="ti ti-arrow-left"></i></a>
                                         @if(!empty(Auth::user()->avatar))
                                             <div class="avatar av-s header-avatar" style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px; background-image: url('{{ asset('/storage/avatars/'.Auth::user()->avatar) }}');">
@@ -477,11 +489,14 @@
         }
 
         .m-header svg {
-            color: #008ECC !important;
+            color: #555555 !important;
+        }
+        .m-header .active-tab svg{
+             color: #6356FA !important;
         }
 
         .active-tab {
-            border-bottom: 2px solid #008ECC !important;
+            border-bottom: 2px solid #6356FA !important;
         }
 
         .messenger-infoView nav a {
@@ -701,7 +716,7 @@
         }
 
         .active-tab {
-            border-bottom: 2px solid #0C7785 !important;
+            border-bottom: 2px solid #6356FA !important;
         }
 
         .messenger-infoView nav a {

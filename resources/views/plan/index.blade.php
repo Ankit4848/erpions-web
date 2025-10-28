@@ -76,14 +76,14 @@
                    ">
                     <div class="card-body">
                         <span class="price-badge bg-primary">{{ $plan->name }}</span>
-                        @if (\Auth::user()->type == 'company' && \Auth::user()->plan == $plan->id)
+                        <!-- @if (\Auth::user()->type == 'company' && \Auth::user()->plan == $plan->id)
                             <div class="d-flex flex-row-reverse m-0 p-0 active-tag">
                                 <span class=" align-items-right">
                                     <i class="f-10 lh-1 fas fa-circle text-primary"></i>
                                     <span class="ms-2">{{ __('Active') }}</span>
                                 </span>
                             </div>
-                        @endif
+                        @endif -->
                         @if (\Auth::user()->type == 'super admin' && $plan->price > 0)
                         <div class="d-flex flex-row-reverse m-0 p-0 active-tag">
                             <div class="form-check form-switch custom-switch-v1 float-end">
@@ -96,11 +96,11 @@
                             </div>
                         </div>
                     @endif
-                        <h1 class="mb-4 f-w-600 ">
+                        <h1 class="mb-4 mt-5 f-w-600 ">
                             {{ isset($admin_payment_setting['currency_symbol']) ? $admin_payment_setting['currency_symbol'] : '$' }}{{ number_format($plan->price) }}
                             <small class="text-sm">/{{ __(\App\Models\Plan::$arrDuration[$plan->duration]) }}</small>
                         </h1>
-                        <p class="mb-0">
+                        <p class="mb-0 trial-lable">
                             {{ __('Free Trial Days : ') . __($plan->trial_days ? $plan->trial_days : 0) }}<br />
                         </p>
 
@@ -148,6 +148,15 @@
                                 </ul>
                             </div>
                         </div>
+
+                         @if (\Auth::user()->type == 'company' && \Auth::user()->plan == $plan->id)
+                            <div class="d-flex flex-row-reverse p-0 active-tag">
+                                <span class=" align-items-right">
+                                    <i class="f-10 lh-1 fas fa-circle text-success"></i>
+                                    <span class="ms-2">{{ __('Active') }}</span>
+                                </span>
+                            </div>
+                        @endif
 
                         @if (\Auth::user()->type == 'super admin')
                         <div class="d-flex align-items-center justify-content-center">

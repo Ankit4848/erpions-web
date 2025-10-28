@@ -381,7 +381,7 @@
         <div class="col-sm-12">
             <div class="row">
                 <div class="col-xl-3">
-                    <div class="card sticky-top setting-sidebar" style="top:30px;">
+                    <div class="card sticky-top setting-sidebar" style="top:30px; padding:0px;">
                         <div class="list-group list-group-flush" id="useradd-sidenav">
                             <a href="#brand-settings"
                                 class="list-group-item list-group-item-action border-0">{{ __('Brand Settings') }}
@@ -479,8 +479,8 @@
                         <div class="card-body p-3">
                             <div class="row row-gap-1 mb-4">
                                 <div class="col-lg-4 col-sm-6 col-md-6">
-                                    <div class="card mb-0">
-                                        <div class="card-header p-3">
+                                    <div class="card mb-0 p-0">
+                                        <div class="card-header set-logo p-3">
                                             <h5>{{ __('Logo dark') }}</h5>
                                         </div>
                                         <div class="card-body p-3">
@@ -510,8 +510,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-6 col-md-6">
-                                    <div class="card mb-0">
-                                        <div class="card-header p-3">
+                                    <div class="card mb-0 p-0">
+                                        <div class="card-header set-logo p-3">
                                             <h5>{{ __('Logo Light') }}</h5>
                                         </div>
                                         <div class="card-body p-3">
@@ -542,8 +542,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-sm-6 col-md-6">
-                                    <div class="card mb-0">
-                                        <div class="card-header p-3">
+                                    <div class="card mb-0 p-0">
+                                        <div class="card-header set-logo p-3">
                                             <h5>{{ __('Favicon') }}</h5>
                                         </div>
                                         <div class="card-body p-3">
@@ -626,7 +626,7 @@
                             <div class="setting-card">
                                 <div class="row row-gap-1">
                                     <div class="col-xxl-4 col-sm-6 col-12">
-                                        <div class="card h-100 mb-0">
+                                        <div class="card h-100 mb-0 p-0">
                                             <div class="card-header p-3">
                                                 <h6 class="mb-0 d-flex align-items-center gap-2">
                                                     <i data-feather="credit-card"></i>{{ __('Primary color settings') }}
@@ -698,7 +698,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xxl-3 col-sm-6 col-12">
-                                        <div class="card h-100 mb-0">
+                                        <div class="card h-100 mb-0 p-0">
                                             <div class="card-header p-3">
                                                 <h6 class="mb-0 d-flex align-items-center gap-2">
                                                     <i data-feather="layout"></i>{{ __('Sidebar settings') }}
@@ -717,7 +717,7 @@
                                         </div>
                                     </div>
                                     <div class="col-xxl-3 col-sm-6 col-12">
-                                        <div class="card h-100 mb-0">
+                                        <div class="card h-100 mb-0 p-0">
                                             <div class="card-header p-3">
                                                 <h6 class="mb-0 d-flex align-items-center gap-2">
                                                     <i data-feather="sun"></i>{{ __('Layout settings') }}
@@ -732,12 +732,12 @@
                                                         {{ !empty($setting['cust_darklayout']) && $setting['cust_darklayout'] == 'on' ? 'checked' : '' }} />
 
 
-                                                </div>
+                                                </div>  
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xxl-2 col-sm-6 col-12">
-                                        <div class="card h-100 mb-0">
+                                        <div class="card h-100 mb-0 p-0">
                                             <div class="card-header p-3">
                                                 <h6 class="mb-0 d-flex align-items-center gap-2">
                                                     <i class="ti ti-align-right"></i>{{ __('Enable RTL') }}

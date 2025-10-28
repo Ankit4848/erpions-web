@@ -24,7 +24,7 @@
 @section('content')
     @if ($plan->chatgpt == 1)
         <div class="text-end mb-3">
-            <a href="#" class="btn btn-sm btn-primary" data-size="medium" data-ajax-popup-over="true"
+            <a href="#" class="btn btn-sm btn-primary btn-label" data-size="medium" data-ajax-popup-over="true"
                 data-url="{{ route('generate', ['notification template']) }}" data-bs-toggle="tooltip"
                 data-bs-placement="top" title="{{ __('Generate') }}" data-title="{{ __('Generate Content With AI') }}">
                 <i class="fas fa-robot"></i>{{ __(' Generate With AI') }}
@@ -39,15 +39,15 @@
                     <h5></h5>
                     <div class="row text-xs">
 
-                        <h6 class="font-weight-bold mb-4">{{ __('Variables') }}</h6>
+                        <h6 class="font-weight-bold mb-4 card-title">{{ __('Variables') }}</h6>
                         @php
                             $variables = json_decode($curr_noti_tempLang->variables);
                         @endphp
                         @if (!empty($variables) > 0)
                             @foreach ($variables as $key => $var)
                                 <div class="col-6 pb-1">
-                                    <p class="mb-1">{{ __($key) }} : <span
-                                            class="pull-right text-primary">{{ '{' . $var . '}' }}</span></p>
+                                    <p class="mb-1 label-title">{{ __($key) }} : <span
+                                            class="pull-right text-primary label-detail">{{ '{' . $var . '}' }}</span></p>
                                 </div>
                             @endforeach
                         @endif
@@ -59,7 +59,7 @@
             <h5></h5>
             <div class="row">
                 <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 ">
-                    <div class="card sticky-top language-sidebar mb-0">
+                    <div class="card sticky-top language-sidebar mb-0 p-0">
                         <div class="list-group list-group-flush" id="useradd-sidenav">
                             @foreach ($languages as $key => $lang)
                                 <a class="list-group-item list-group-item-action border-0 {{ $curr_noti_tempLang->lang == $key ? 'active' : '' }}"
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-9 col-sm-9">
+                <div class="col-lg-9 col-md-9 col-sm-9 mt-sm-0 mt-4">
                     <div class="card h-100 p-3">
                         {{ Form::model($curr_noti_tempLang, ['route' => ['notification-templates.update', $curr_noti_tempLang->parent_id], 'method' => 'PUT']) }}
                         <div class="row">

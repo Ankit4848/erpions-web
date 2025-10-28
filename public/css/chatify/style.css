@@ -12,7 +12,7 @@ body {
     display: none;
     background: rgba(0, 0, 0, 0.76);
     position: absolute;
-    top: 43px;
+    top: 65px;
     left: 0;
     right: 0;
     text-align: center;
@@ -64,7 +64,6 @@ body {
     right: 0px;
     z-index: 1;
     background: transparent;
-    width: 45%;
     min-width: 200px;
     overflow: auto;
 }
@@ -78,7 +77,7 @@ body {
 }
 
 .messenger-listView .m-header > nav {
-    margin: 10px;
+    /* margin: 10px; */
 }
 
 .messenger-listView .m-body {
@@ -117,7 +116,7 @@ body {
 
 .m-header svg {
     margin: 0px 8px;
-    font-size: 16px;
+    font-size: 22px;
     transition: transform .12s;
 }
 
@@ -126,11 +125,14 @@ body {
 }
 
 .messenger-search {
-    margin: 0px 10px;
-    width: calc(100% - 20px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* margin: 0px 10px;
+    width: calc(100% - 20px); */
     border: none;
-    padding: 3px 7px;
-    border-radius: 3px;
+    padding: 12px 20px;
+    border-radius: 10px;
     outline: none;
 }
 
@@ -139,7 +141,7 @@ body {
     width: 100%;
     margin-top: 10px;
     background-color: transparent;
-    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.06);
+    /* box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.06); */
 }
 
 .messenger-listView-tabs a {
@@ -209,20 +211,24 @@ body {
 
 .messenger-list-item td p {
     margin-bottom: 4px;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     display: flex;
     align-items: center;
     white-space: nowrap;
     justify-content: space-between;
+    color: #282828;
 }
 
 .messenger-list-item td p span {
     float: right;
+    color: #A7A7A7;
+    font-weight: 500;
+    font-size: 13px;
 }
 
 .messenger-list-item td span {
-    color: #cacaca;
+    color: #989898;
     font-weight: 400;
     font-size: 13px;
 }
@@ -253,13 +259,14 @@ body {
 }
 
 .av-m {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
+    background: #F2F2FF;
 }
 
 .av-s {
-    width: 32px;
-    height: 32px;
+    width: 54px;
+    height: 54px;
 }
 
 .messenger-favorites {
@@ -291,12 +298,12 @@ body {
 }
 
 .messenger-title {
-    margin: 0;
+   margin: 0;
     padding: 10px;
     padding-bottom: 0px;
     text-transform: uppercase;
-    color: #aeaeb7;
-    font-size: 12px;
+    color: #6E6E6E;
+    font-size: 15px;
     font-weight: 600;
 }
 
@@ -338,7 +345,7 @@ body {
     transition: background .3s;
 }
 
-.messenger-infoView-btns a.default:hover, {
+.messenger-infoView-btns a.default:hover {
     background: #f0f6ff;
 }
 
@@ -590,10 +597,12 @@ body {
 }
 
 .message-hint span {
-    background: rgba(154, 161, 170, 0.13);
-    padding: 3px 10px;
-    border-radius: 20px;
-    color: rgb(135, 147, 164);
+    background: #F2F2FF;
+    padding: 8px;
+    border-radius: 100px;
+    color: #2A2A2A;
+    font-size: 13px;
+    font-weight: 400;
 }
 
 .upload-avatar-details {

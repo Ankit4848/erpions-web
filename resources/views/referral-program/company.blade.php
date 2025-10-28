@@ -46,7 +46,7 @@
         <div class="col-sm-12">
             <div class="row">
                 <div class="col-xl-3">
-                    <div class="card sticky-top" style="top:30px">
+                    <div class="card sticky-top p-0" style="top:30px">
                         <div class="list-group list-group-flush" id="useradd-sidenav">
                             <a href="#" class="list-group-item list-group-item-action border-0 tab-link active"
                                 data-tab="guideline">{{ __('GuideLine') }}

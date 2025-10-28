@@ -39,9 +39,9 @@
                                                     <span>
                                                         <div class="action-btn">
                                                             <a href="{{ route('manage.notification.language', [$notification_template->id, \Auth::user()->lang]) }}"
-                                                                class="mx-3 btn btn-sm  align-items-center bg-warning"
+                                                                class="mx-3 btn btn-sm  align-items-center view-btn"
                                                                 data-bs-toggle="tooltip" data-bs-original-title="{{__('View')}}" title="">
-                                                                <span class="text-white"><i class="ti ti-eye"></i></span>
+                                                                <span class=""><i class="ti ti-eye"></i></span>
                                                             </a>
                                                         </div>
                                                     </span>
