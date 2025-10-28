@@ -10,16 +10,19 @@
 
 @section('action-btn')
     <div class="float-end d-flex">
-        <a href="#" data-size="md"  data-bs-toggle="tooltip" title="{{__('Import')}}" data-url="{{ route('employee.file.import') }}" data-ajax-popup="true" data-title="{{__('Import employee CSV file')}}" class="btn btn-sm bg-brown-subtitle me-2">
-            <i class="ti ti-file-import"></i>
+        <a href="#" data-size="md"  data-bs-toggle="tooltip" title="{{__('Import')}}" data-url="{{ route('employee.file.import') }}" data-ajax-popup="true" data-title="{{__('Import employee CSV file')}}" class=" me-2">
+            <!-- <i class="ti ti-file-import"></i> -->
+             <img src="{{ asset('assets/images/design-images/All/table-1.svg') }}" alt="" style="width: 37px;">
         </a>
-        <a href="{{route('employee.export')}}" data-bs-toggle="tooltip" title="{{__('Export')}}" class="btn btn-sm btn-secondary me-2">
-            <i class="ti ti-file-export"></i>
+        <a href="{{route('employee.export')}}" data-bs-toggle="tooltip" title="{{__('Export')}}" class=" me-2">
+            <!-- <i class="ti ti-file-export"></i> -->
+             <img src="{{ asset('assets/images/design-images/All/table-2.svg') }}" alt="" style="width: 37px;">
         </a>
         <a href="{{ route('employee.create') }}"
-            data-title="{{ __('Create New Employee') }}" data-bs-toggle="tooltip" title="" class="btn btn-sm btn-primary"
+            data-title="{{ __('Create New Employee') }}" data-bs-toggle="tooltip" title="" class=""
             data-bs-original-title="{{ __('Create') }}">
-            <i class="ti ti-plus"></i>
+            <!-- <i class="ti ti-plus"></i> -->
+             <img src="{{ asset('assets/images/design-images/All/table-3.svg') }}" alt="" style="width: 37px;">
         </a>
     </div>
 @endsection

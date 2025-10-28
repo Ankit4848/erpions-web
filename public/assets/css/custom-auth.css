@@ -349,7 +349,236 @@
 
 
 /* login page css (12-11-2024) */
-.custom-login .custom-wrapper .custom-row
-{
-    z-index: unset;
+    .custom-login .custom-wrapper .custom-row
+    {
+        z-index: unset;
+    }
+
+
+/* ==== */
+
+  .new-login-page-container {
+      display: flex;
+      min-height: 100vh;
+      flex-wrap: wrap;
+    }
+
+    .new-login-page-left {
+      flex: 1;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content:center;
+      align-items: center;
+      padding: 50px;
+    }
+
+    @media(max-width : 575px){
+        .new-login-page-left {
+            padding: 10px;
+            padding-top: 50px;
+        }
+    }
+
+    
+    .new-login-page-left .new-login-page-logo {
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    .new-login-page-left .new-login-page-logo span {
+      color: #5b52f2;
+    }
+
+    .new-login-page-form {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .new-login-page-form label {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .new-login-page-form input {
+      border-radius: 30px;
+      padding: 10px 20px;
+    }
+
+    .new-login-page-btn {
+      background-color: #5b52f2;
+      color: white;
+      border-radius: 30px;
+      padding: 10px 0;
+      width: 100%;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .new-login-page-btn:hover {
+      background-color: #4a43d3;
+    }
+
+    .new-login-page-right {
+      flex: 1;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 30px 30px 0px;
+    }
+
+    .new-login-page-preview {
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    .text-muted small {
+      font-size: 13px;
+    }
+
+    @media (max-width: 992px) {
+      .new-login-page-container {
+        flex-direction: column;
+      }
+
+      .new-login-page-right {
+        /* order: -1; */
+        padding: 30px;
+      }
+    }
+
+    .new-login-page-right-design {
+     background-image: url("../images/design-images/Login-right-bg.svg");
+      height: 100%;
+      width: 100%;
+      border-radius: 10px;
+      /* box-shadow: 0px 0px 10px rgba(0,0,0,0.05); */
+      overflow: hidden;
+    }
+
+    .right-details-login{
+       width: 90%;
+       margin-left: auto;
+       margin-top: 62px;
+    }
+
+    .login-dash-img{
+        width: 100%;
+        border-radius: 10px 0px 0px 10px;
+        margin-top: 20px;
+    }
+
+    .right-login-titles{
+     width: 76%;
+    }
+
+    .right-login-titles-h1{
+        color: #727272 !important;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 13px 32px;
+        border-radius: 50px;
+        background-color: white;
+        border: 1px solid #E4E4E4;
+        width: fit-content;
+    }
+
+    .right-login-titles-h5{
+        font-size: 16px;
+        color: black;
+        font-weight: 500;
+        margin-top: 20px;
+        line-height: 1.6;
+    }
+
+    .right-login-titles-h5 span{
+        color: #6356FA;
+    }
+
+    .login-body-filed{
+        background-color: white;
+    }
+
+    .login-body-filed{
+        min-width: 500px;
+    }
+
+    @media(max-width : 575px){
+       .login-body-filed{
+        min-width: 400px;
+    } 
+    }
+        @media(max-width : 400px){
+       .login-body-filed{
+        min-width: 310px;
+    } 
+    }
+
+    .login-title{
+        font-size: 23px;
+        color: black;
+        margin-top: 60px;
+        margin-bottom: 40px;
+        font-weight: 600;
+    }
+
+    .login-form-label{
+        font-size: 16px;
+        font-weight: 500 !important;
+        color: #5E5E5E !important;
+    }
+
+    .login-form-control{
+        border: 1px solid #CACACA;
+        padding: 15px;
+            border-radius: 100px;
+    }
+
+    /* Remove yellow autofill background in Chrome/Safari */
+.login-form-control:-webkit-autofill,
+.login-form-control:-webkit-autofill:hover,
+.login-form-control:-webkit-autofill:focus,
+.login-form-control:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: transparent !important;
 }
+
+.btn-logins,
+.btn-logins:hover{
+        background-color: #6356FA;
+    color: white;
+    font-size: 18px;
+    padding: 9px;
+    border-radius: 100px;
+}
+
+
+.login-nav-last{
+    display: flex;
+    list-style: none;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.details-header{
+    margin-top: auto;
+}
+.login-footer{
+    margin-top: auto;
+}
+
+
+.nav-logo{
+    display: flex;
+    justify-content: center;
+}
+
+

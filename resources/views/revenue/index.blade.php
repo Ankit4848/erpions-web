@@ -63,12 +63,12 @@
                                 <div class="row">
                                     <div class="col-auto">
 
-                                        <a href="#" class="btn btn-sm btn-primary me-1" onclick="document.getElementById('revenue_form').submit(); return false;" data-bs-toggle="tooltip" title="{{__('Apply')}}" data-original-title="{{__('apply')}}">
-                                            <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
+                                        <a href="#" class="me-1" onclick="document.getElementById('revenue_form').submit(); return false;" data-bs-toggle="tooltip" title="{{__('Apply')}}" data-original-title="{{__('apply')}}">
+                                            <img src="{{ asset('assets/images/design-images/All/S-1.svg') }}" alt="" style="width: 41px;">
                                         </a>
 
-                                        <a href="{{route('revenue.index')}}" class="btn btn-sm btn-danger " data-bs-toggle="tooltip"  title="{{ __('Reset') }}" data-original-title="{{__('Reset')}}">
-                                            <span class="btn-inner--icon"><i class="ti ti-refresh text-white-off "></i></span>
+                                        <a href="{{route('revenue.index')}}" data-bs-toggle="tooltip"  title="{{ __('Reset') }}" data-original-title="{{__('Reset')}}">
+                                            <img src="{{ asset('assets/images/design-images/All/S-2.svg') }}" alt="" style="width: 41px;">
                                         </a>
 
 

@@ -38,12 +38,12 @@
 
 @section('action-btn')
     <div class="float-end">
-        <a href="{{ route('zoom-meeting.calender') }}" class="btn btn-sm btn-primary-subtle me-1" data-bs-toggle="tooltip" title="{{__('Calender View')}}" data-original-title="{{__('Calender View')}}">
-            <i class="ti ti-calendar"></i>
+        <a href="{{ route('zoom-meeting.calender') }}" class="me-1" title="{{__('Calender View')}}" data-original-title="{{__('Calender View')}}">
+            <img src="{{ asset('assets/images/design-images/All/zoom.svg') }}"  alt="" style="width: 37px;">
         </a>
         @can('create zoom meeting')
-        <a href="#" data-size="lg" data-url="{{ route('zoom-meeting.create') }}" data-ajax-popup="true" data-bs-toggle="tooltip" title="{{__('Create')}}" data-title="{{__('Create  New Meeting')}}" class="btn btn-sm btn-primary">
-            <i class="ti ti-plus"></i>
+        <a href="#" data-size="lg" data-url="{{ route('zoom-meeting.create') }}" data-ajax-popup="true"  title="{{__('Create')}}" data-title="{{__('Create  New Meeting')}}">
+            <img src="{{ asset('assets/images/design-images/All/table-3.svg') }}"  alt="" style="width: 37px;">
         </a>
         @endcan
     </div>

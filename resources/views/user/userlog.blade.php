@@ -17,16 +17,12 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="mt-2 " id="multiCollapseExample1">
-                <div class="card">
-                    <div class="card-body">
+                <div class="up-new-shadow card">
+                    <div class="card-body ">
                         {{ Form::open(array('route' => array('user.userlog'),'method'=>'get','id'=>'user_userlog')) }}
-                        <div class="row align-items-center justify-content-end">
+                        <div class="row align-items-center justify-content-start">
                             <div class="col-xl-10">
                                 <div class="row">
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                    </div>
-                                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
-                                    </div>
                                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12">
                                         <div class="btn-box">
                                             {{Form::label('month',__('Month'),['class'=>'form-label'])}}
@@ -39,20 +35,21 @@
                                             {{ Form::select('users', $filteruser,isset($_GET['users'])?$_GET['users']:'', array('class' => 'form-control select')) }}
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-auto mt-4">
-                                <div class="row">
-                                    <div class="col-auto">
-                                        <a href="#" class="btn btn-sm btn-primary me-1" onclick="document.getElementById('user_userlog').submit(); return false;" data-bs-toggle="tooltip" title="{{__('Apply')}}" data-original-title="{{__('apply')}}">
-                                            <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
-                                        </a>
-                                        <a href="{{route('user.userlog')}}" class="btn btn-sm btn-danger " data-bs-toggle="tooltip"  title="{{ __('Reset') }}" data-original-title="{{__('Reset')}}">
-                                            <span class="btn-inner--icon"><i class="ti ti-refresh text-white-off "></i></span>
-                                        </a>
+                                     <div class="col-auto mt-4">
+                                        <div class="row">
+                                            <div class="col-auto">
+                                                <a href="#" class="btn btn-sm btn-primary me-1" onclick="document.getElementById('user_userlog').submit(); return false;" data-bs-toggle="tooltip" title="{{__('Apply')}}" data-original-title="{{__('apply')}}">
+                                                    <span class="btn-inner--icon"><i class="ti ti-search"></i></span>
+                                                </a>
+                                                <a href="{{route('user.userlog')}}" class="btn btn-sm btn-danger " data-bs-toggle="tooltip"  title="{{ __('Reset') }}" data-original-title="{{__('Reset')}}">
+                                                    <span class="btn-inner--icon"><i class="ti ti-refresh text-white-off "></i></span>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                           
                         </div>
                     </div>
                     {{ Form::close() }}
@@ -63,13 +60,13 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card up-new-shadow">
                 <div class="card-body table-border-style">
                     <div class="table-responsive">
-                        <table class="table datatable">
+                        <table class="table datatable b-removes  table-fixed">
                             <thead>
                                 <tr>
-                                    <th>{{ __('User Name') }}</th>
+                                    <th >{{ __('User Name') }}</th>
                                     <th>{{ __('Role') }}</th>
                                     <th>{{ __('Last Login') }}</th>
                                     <th>{{ __('Ip') }}</th>
@@ -80,7 +77,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($userdetails as $user)
+                               
+                            @foreach ($userdetails as $user)
                                     @php
                                         $userdetail = json_decode($user->Details);
                                     @endphp
@@ -112,7 +110,7 @@
                                             @endcan
                                         </td>
                                     </tr>
-                                @endforeach
+                                @endforeach 
                             </tbody>
                         </table>
                     </div>

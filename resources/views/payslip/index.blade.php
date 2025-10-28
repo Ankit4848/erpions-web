@@ -14,7 +14,7 @@
         <div class="card">
             <div class="card-body">
                 {{ Form::open(['route' => ['payslip.store'], 'method' => 'POST', 'id' => 'payslip_form']) }}
-                <div class="d-flex align-items-end justify-content-end row row-gap-1">
+                <div class="d-flex align-items-end justify-content-start row row-gap-1">
                     <div class="col-xl-2 col-lg-3 col-md-6 col-sm-12 col-12">
                         <div class="btn-box">
                             {{ Form::label('month', __('Select Month'), ['class' => 'form-label']) }}

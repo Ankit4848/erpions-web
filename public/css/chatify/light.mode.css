@@ -20,15 +20,17 @@
 }
 .messenger-listView{
     background: #fff;
-    border: 1px solid #eee;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+    border-radius: 11px;
+    /* border: 1px solid #eee; */
 }
 .messenger-listView-tabs{
     border-bottom: 1px solid #eee;
 }
-.messenger-listView-tabs a:hover,
+/* .messenger-listView-tabs a:hover,
 .messenger-listView-tabs a:focus{
     background-color: #f7f7f7;
-}
+} */
 .messenger-favorites div.avatar{
     border: 2px solid #fff;
 }
@@ -36,16 +38,19 @@
     background: #f7f7f7;
 }
 .messenger-messagingView {
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    background: #fafaff;
+    /* border-top: 1px solid #eee; */
+    /* border-bottom: 1px solid #eee; */
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+    border-radius: 11px;
 }
 .m-header-messaging {
     background: #fff;
 }
 .messenger-infoView {
     background: #fff;
-    border: 1px solid #eee;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.09);
+    border-radius: 11px;
 }
 .messenger-infoView>p{
   color: #000;
@@ -56,6 +61,7 @@
 .messenger-sendCard{
     background: #fff;
     border-top: 1px solid #eee;
+    padding: 10px 15px;
 }
 .attachment-preview>p{
     color: #333;
@@ -69,7 +75,8 @@
     box-shadow: 0px 6px 11px rgba(18, 67, 105, 0.03);
 }
 .m-li-divider{
-    border-bottom: 1px solid #ebebeb;
+    /* border-bottom: 1px solid #ebebeb; */
+    margin-top: 20px;
 }
 .m-header a,
 .m-header a:hover,
@@ -78,7 +85,7 @@
     color: #606679;
 }
 .messenger-list-item td p{
-    color: #606679;
+    color: black;
 }
 .activeStatus{
     border: 2px solid #fff;
